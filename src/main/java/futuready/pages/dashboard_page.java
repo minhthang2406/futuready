@@ -16,5 +16,6 @@ public class dashboard_page {
 //Function 
 	public void setup (WebDriver driver) throws Exception {
 		this.driver = driver;
+		//something
 	}
 }
