@@ -12,7 +12,8 @@ baseSetup setup = new baseSetup();
 login_page login = new login_page();
 login_with_user_name_and_password_page loginWithUserAndPass = new login_with_user_name_and_password_page(); 
 forgot_password_page forgotPasswordPage = new forgot_password_page();
-  @BeforeTest
+dashboard_page dashboard = new dashboard_page(); 
+@BeforeTest
   public void beforeTest() throws Exception {
 	  setup.wellcome();
 	  setup.select_test_server();
@@ -93,6 +94,7 @@ forgot_password_page forgotPasswordPage = new forgot_password_page();
 	  login.navigate_to_login_page();
 	  login.click_on_login_with_line_btn();
 	  login.login_line_account();
+	  dashboard.verify_elements();
   }
   
 
