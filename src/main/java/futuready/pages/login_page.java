@@ -20,9 +20,10 @@ public class login_page {
 	private By line_user_name = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/fieldset[1]/div[1]/input[1]");
 	private By line_user_password = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/fieldset[1]/div[2]/input[1]");
 	private By login_line_btn = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/fieldset[1]/div[3]/button[1]");
-	
+	private By create_qr_code_btn = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/a[1]");
+	private By displayed_qr_code = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/p[1]/img[1]");
 	public void setup_driver (WebDriver base_driver) throws Exception {
-	this.driver = base_driver;
+		this.driver = base_driver;
 	}
 	
 	public void click_on_login_with_line_btn () throws Exception {
@@ -88,6 +89,15 @@ public class login_page {
 		linePassword.sendKeys(lineUserPassword_input);
 		Thread.sleep(1000);
 		loginLineBtn.click();
+	}
+	
+	public void login_line_by_qrcode () throws Exception {
+		WebElement createQRcode = driver.findElement(create_qr_code_btn);
+		createQRcode.click();
+		Thread.sleep(2000);
+		WebElement displayedQrCode = driver.findElement(displayed_qr_code);
+		displayedQrCode.isDisplayed();
+		Thread.sleep(2000);
 	}
 	
 	public void TC_FU_001_LGI_01 () throws Exception {

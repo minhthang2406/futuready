@@ -7,6 +7,7 @@
         <methods>
           <include name="afterTest"/>
           <include name="TC_FU_001_LGI_06_User_can_create_a_new_password_in_case_of_forgot_password"/>
+          <include name="TC_FU_001_LGI_11_User_can_login_with_line_by_qrcode"/>
           <include name="TC_FU_001_LGI_10_User_can_login_with_line_usernameand_password"/>
           <include name="beforeTest"/>
         </methods>

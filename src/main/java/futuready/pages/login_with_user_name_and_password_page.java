@@ -8,8 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 public class login_with_user_name_and_password_page {
 	WebDriver driver;
-	public static String username_input = "minhthangtran";
-	public static String password_input = "123456";
+	public static String username_input = "287051";
+	public static String password_input = "Init123456";
 	public static String wrong_username_input = "minhthangtran";
 	public static String wrong_password_input = "123456";
 	//Locator
@@ -60,6 +60,7 @@ public class login_with_user_name_and_password_page {
 	public void click_login_btn () throws Exception {
 		WebElement loginBtn = driver.findElement(login_btn);
 		loginBtn.click();
+		Thread.sleep(4000);
 	}
 	
 	public void verify_wrong_login_info_message_display () throws Exception {

@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.*;
 
 public class forgot_password_page {
 static WebDriver driver;
-static String username = "username";
+static String username = "287051";
 //Locator
 	private By logo_fu = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[1]/figure[1]/img[1]");
 	private By forgot_password_label = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/h2[1]");

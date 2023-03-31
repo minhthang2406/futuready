@@ -19,6 +19,9 @@ public class dashboard_page {
 	private By dashboard_feature = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/section[1]/div[1]/div[1]/div[1]");
 	private By category = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/section[2]/div[1]/div[1]/div[1]");
 	private By navbar_menu = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/nav[1]/div[1]/div[2]");
+	private By my_profile_btn = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/nav[1]/div[1]/div[2]/div[1]/a[2]/span[1]/i[1]");
+	private By logout_btn = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/section[2]/div[1]/div[3]/button[1]/span[1]");
+	
 	//Function 
 	public void setup (WebDriver driver) throws Exception {
 		this.driver = driver;
@@ -32,6 +35,15 @@ public class dashboard_page {
 		logo.isDisplayed();
 		dashboard_feature.isDisplayed();
 		navbarMenu.isDisplayed();
-		
+	}
+	
+	public void logout_account () throws Exception {
+		Thread.sleep(1000);
+		WebElement myProfileBtn = driver.findElement(my_profile_btn);
+		myProfileBtn.click();
+		Thread.sleep(2000);
+		WebElement logoutBtn = driver.findElement(logout_btn);
+		logoutBtn.click();
+		Thread.sleep(2000);
 	}
 }
