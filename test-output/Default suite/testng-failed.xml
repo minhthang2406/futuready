@@ -3,16 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="futuready.testcases.TC_FU_002_SGN_Sign_Up_New_Account_In_Friends_Page">
+      <class name="futuready.testcases.TC_FU_001_Login_To_Friends_System">
         <methods>
-          <include name="TC_FU_002_SGN_02_User_can_sign_up_a_new_account"/>
-          <include name="TC_FU_002_SGN_01_User_can_navigate_to_sign_up_a_new_account_page"/>
-          <include name="beforeTest"/>
-          <include name="TC_FU_002_SGN_03_System_verifies_02_confirmation_checked_boxes_in_the_first_sign_up_page"/>
           <include name="afterTest"/>
-          <include name="TC_FU_002_SGN_04_System_verifies_required_fields_in_the_first_signup_page"/>
+          <include name="TC_FU_001_LGI_06_User_can_create_a_new_password_in_case_of_forgot_password"/>
+          <include name="TC_FU_001_LGI_11_User_can_login_with_line_by_qrcode"/>
+          <include name="TC_FU_001_LGI_10_User_can_login_with_line_usernameand_password"/>
+          <include name="beforeTest"/>
         </methods>
-      </class> <!-- futuready.testcases.TC_FU_002_SGN_Sign_Up_New_Account_In_Friends_Page -->
+      </class> <!-- futuready.testcases.TC_FU_001_Login_To_Friends_System -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
