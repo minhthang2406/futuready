@@ -16,6 +16,7 @@ public class login_page {
 	private By signup_label_text = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[3]");
 	private By signup_with_line_btn = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[4]/span[2]");
 	private By click_here_btn = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[2]/span[1]");
+	private By signup_button = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[3]/span[1]");
 	//Line Login Page
 	private By line_user_name = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/fieldset[1]/div[1]/input[1]");
 	private By line_user_password = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/fieldset[1]/div[2]/input[1]");
@@ -97,6 +98,12 @@ public class login_page {
 		Thread.sleep(2000);
 		WebElement displayedQrCode = driver.findElement(displayed_qr_code);
 		displayedQrCode.isDisplayed();
+		Thread.sleep(2000);
+	}
+	
+	public void click_on_signup_btn () throws Exception {
+		WebElement signupBtn = driver.findElement(signup_button);
+		signupBtn.click();
 		Thread.sleep(2000);
 	}
 	
