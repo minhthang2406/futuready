@@ -16,6 +16,7 @@ public class TC_FU_002_SGN_Sign_Up_New_Account_In_Friends_Page {
   login_page login = new login_page();
   login_with_user_name_and_password_page loginWithUserAndPass = new login_with_user_name_and_password_page(); 
   forgot_password_page forgotPasswordPage = new forgot_password_page();
+  
   @BeforeTest
   public void beforeTest() throws Exception {
 	  setup.wellcome();
