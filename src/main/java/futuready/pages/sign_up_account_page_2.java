@@ -18,8 +18,8 @@ WebDriver driver;
 	private By national_id_label = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[1]/div[1]/div[2]/label[1]");
 	private By date_of_birth_field = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[1]/div[1]/div[1]/div[1]");
 	private By date_of_birth_year_dropdown = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/span[1]/select[1]");
-	private By date_of_birth_year_selected = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/span[1]/select[1]/option[117]");
-	private By date_of_birth_selected_date = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[5]/a[2]/span[1]");
+	private By date_of_birth_year_selected = By.xpath("//option[contains(text(),'1989')]");
+	private By date_of_birth_selected_date = By.xpath("//span[contains(text(),'24')]");
 	private By mailing_address_label = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[2]/div[1]/div[1]/label[1]");
 	private By mailing_address_field = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[2]/div[1]/div[1]/div[1]/textarea[1]");
 	private By province_label = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[2]/div[1]/div[1]/div[1]/textarea[1]");
@@ -45,6 +45,7 @@ WebDriver driver;
 	private By bank_account_scan_image_label = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[8]/div[1]/div[1]/label[1]");
 	private By bank_account_scan_image_file_button = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[8]/div[1]/div[1]/div[1]/input[1]");
 	private By national_id_scan_label = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[9]/div[1]/div[1]/label[1]");
+	private By national_id_field = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[1]/div[1]/div[2]/div[1]/input[1]");
 	private By national_id_scan_file_button = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[9]/div[1]/div[1]/div[1]/input[1]");
 	private By referrer_selected_label = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[10]/div[1]/div[1]/label[1]");
 	private By referrer_selected_dropdown = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[10]/div[1]/div[1]/div[1]/span[1]/select[1]");
@@ -66,34 +67,89 @@ WebDriver driver;
 	}
 	
 	public void select_date_of_birth () throws Exception {
-		
+		WebElement selectBirthDropdown = driver.findElement(date_of_birth_field);
+		selectBirthDropdown.click();
+		Thread.sleep(3000);
+		WebElement selectYearDropdown = driver.findElement(date_of_birth_year_dropdown);
+		selectYearDropdown.click();
+		Thread.sleep(3000);
+		WebElement selectYear = driver.findElement(date_of_birth_year_selected);
+		selectYear.click();
+		Thread.sleep(3000);
+		WebElement selectDate = driver.findElement(date_of_birth_selected_date);
+		selectDate.click();
+		Thread.sleep(2000);
 	}
 	
 	public void input_national_id_number () throws Exception {
+		Random rand = new Random();
+		int nationalId = rand.nextInt(111111111,999999999);
+		String nationalIdInput = Integer.toString(nationalId) + "1234";
+		WebElement nationalIdField = driver.findElement(national_id_field);
+		nationalIdField.sendKeys(nationalIdInput);
 		
 	}
 	
 	public void input_mailling_address () throws Exception {
-		
+		Random rand = new Random();
+		int emailAddress = rand.nextInt(11111,99999);
+		String emailAddInput = Integer.toString(emailAddress) + "@gmail.com";
+		WebElement emailAddressField = driver.findElement(mailing_address_field);
+		emailAddressField.sendKeys(emailAddInput);
+		Thread.sleep(2000);
 	}
 	
 	public void select_province () throws Exception {
-		
+		WebElement provinceDropdown = driver.findElement(province_dropdown);
+		provinceDropdown.click();
+		Thread.sleep(1000);
+		WebElement provinceSelected = driver.findElement(province_selected);
+		provinceSelected.click();
+		Thread.sleep(2000);
 	}
 	
 	public void select_district () throws Exception {
-		
+		WebElement districtDropdown = driver.findElement(district_dropdown);
+		districtDropdown.click();
+		Thread.sleep(1000);
+		WebElement selectedDistrict = driver.findElement(district_selected);
+		selectedDistrict.click();
+		Thread.sleep(2000);
 	}
 	
 	public void select_sub_district () throws Exception {
+		WebElement subDistrictDropdown = driver.findElement(sub_district_dropdown);
+		subDistrictDropdown.click();
+		Thread.sleep(1000);
+		WebElement selectedSubDistrict = driver.findElement(sub_district_selected);
+		selectedSubDistrict.click();
+		Thread.sleep(2000);
 		
 	}
 	
 	public void input_zip_code () throws Exception {
-		
+		Random rand = new Random();
+		int randomZipCode = rand.nextInt(1111,9999);
+		String inputtedZipCode = Integer.toString(randomZipCode);
+		WebElement zipCodeField = driver.findElement(zip_code_field);
+		zipCodeField.sendKeys(inputtedZipCode);
 	}
 	
 	public void input_bank_name () throws Exception {
+	    
+	    
+	    	String[] bankName = {"A Chau Bank", "Vietcombank", "BIDV", "An Binh Bank", "Citibank", "Agribank"};
+		    int bankNameCount = bankName.length;
+		    Random rand = new Random();
+		    String selectedBank = null;
+	    for (int i =0; i<bankNameCount; i++) {
+	    	int randomBankNameCount = rand.nextInt(0,bankNameCount);
+	    	selectedBank = bankName[randomBankNameCount];
+	    	
+	    }
+	    
+		WebElement inputBankNameField = driver.findElement(bank_name_field);
+		inputBankNameField.sendKeys(selectedBank);
 		
 	}
 	

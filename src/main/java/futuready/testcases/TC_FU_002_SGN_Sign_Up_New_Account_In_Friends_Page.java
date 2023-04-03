@@ -17,6 +17,7 @@ public class TC_FU_002_SGN_Sign_Up_New_Account_In_Friends_Page {
   login_with_user_name_and_password_page loginWithUserAndPass = new login_with_user_name_and_password_page(); 
   forgot_password_page forgotPasswordPage = new forgot_password_page();
   sign_up_account_page signupAccountPage = new sign_up_account_page();
+  sign_up_account_page_2 signupAccountPage2 = new sign_up_account_page_2();
   @BeforeTest
   public void beforeTest() throws Exception {
 	  setup.wellcome();
@@ -29,6 +30,7 @@ public class TC_FU_002_SGN_Sign_Up_New_Account_In_Friends_Page {
 	  forgotPasswordPage.setup(baseSetup.driver);
 	  dashboard.setup(baseSetup.driver);
 	  signupAccountPage.setup_driver(baseSetup.driver);
+	  signupAccountPage2.setup_driver(baseSetup.driver);
   }
   
   @Test
@@ -54,6 +56,16 @@ public class TC_FU_002_SGN_Sign_Up_New_Account_In_Friends_Page {
 	  signupAccountPage.select_checkbox_1();
 	  signupAccountPage.select_checkbox_2();
 	  signupAccountPage.click_on_agree_and_next_button();
+	  //Next Page
+	  signupAccountPage2.input_national_id_number();
+	  signupAccountPage2.select_date_of_birth();
+	  signupAccountPage.scroll_down_to_bottom();
+	  signupAccountPage2.select_province();
+	  signupAccountPage2.select_district();
+	  signupAccountPage2.select_sub_district();
+	  signupAccountPage2.input_zip_code();
+	  signupAccountPage2.input_mailling_address();
+	  signupAccountPage2.input_bank_name();
 	  System.out.println(" -> DONE");
   }
   
