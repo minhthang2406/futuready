@@ -136,8 +136,6 @@ WebDriver driver;
 	}
 	
 	public void input_bank_name () throws Exception {
-	    
-	    
 	    	String[] bankName = {"A Chau Bank", "Vietcombank", "BIDV", "An Binh Bank", "Citibank", "Agribank"};
 		    int bankNameCount = bankName.length;
 		    Random rand = new Random();
