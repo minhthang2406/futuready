@@ -6,7 +6,6 @@
       <class name="futuready.testcases.TC_FU_002_SGN_Sign_Up_New_Account_In_Friends_Page">
         <methods>
           <include name="TC_FU_002_SGN_02_User_can_sign_up_a_new_account"/>
-          <include name="TC_FU_002_SGN_01_User_can_navigate_to_sign_up_a_new_account_page"/>
           <include name="beforeTest"/>
           <include name="afterTest"/>
         </methods>

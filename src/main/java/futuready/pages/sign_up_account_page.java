@@ -10,9 +10,15 @@ import org.openqa.*;
 import org.openqa.selenium.chrome.*;
 import org.openqa.selenium.edge.*;
 import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.*;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.time.Duration;
 public class sign_up_account_page {
 	public static WebDriver driver;
+	private String email_address = "agencytester22@mailsac.com";
 	//Locators
 	private By signup_label = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/h2[1]");
 	private By first_name_label = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[1]/div[1]/div[1]/label[1]");
@@ -42,6 +48,14 @@ public class sign_up_account_page {
 	private By confirmation_text_3 = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[5]/div[4]/div[1]/span[1]");
 	private By agree_and_next_button = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[6]/p[1]/button[1]");
 	private By language_button = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/a[1]");
+	//Error messages
+	private By error_message_first_name_field = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[1]/div[1]/div[1]/p[1]/div[1]");
+	private By error_message_last_name_field = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[1]/div[1]/div[2]/p[1]/div[1]");
+	private By error_message_nick_name_field = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[2]/div[1]/div[2]/p[1]/div[1]");
+	private By error_message_email_address_field = By.xpath("//*[@id=\"__layout\"]/div/div/section/div/div[3]/div/form/div[3]/div/div[1]/p/div");
+	private By error_message_phone_field = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[3]/div[1]/div[2]/p[1]/div[1]");
+	private By error_message_line_id_field = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[4]/div[1]/div[1]/p[1]/div[1]");
+	private By error_message_line_display_name_field = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[4]/div[1]/div[2]/p[1]/div[1]");
 	
 	//Functions
 	public void setup_driver (WebDriver driver) throws Exception {
@@ -126,7 +140,7 @@ public class sign_up_account_page {
 	
 	public void input_email_address () throws Exception {
 		WebElement inputEmailAddress = driver.findElement(email_address_field);
-		inputEmailAddress.sendKeys("thang@gmail.com");
+		inputEmailAddress.sendKeys(email_address);
 		Thread.sleep(1000);
 	}
 	
@@ -173,4 +187,42 @@ public class sign_up_account_page {
 		driver.findElement(By.cssSelector("body")).sendKeys(Keys.END);
 		Thread.sleep(2000);
 	}
+	
+	public void  verify_blank_fields () throws Exception {
+		Thread.sleep(2000);
+		WebElement errorMessMailAddress = driver.findElement(error_message_email_address_field);
+		errorMessMailAddress.isDisplayed();
+		Assert.assertEquals(errorMessMailAddress.getText(),"This field is required");
+		WebElement errorMessFirstName = driver.findElement(error_message_first_name_field);
+		errorMessFirstName.isDisplayed();
+		Assert.assertEquals(errorMessFirstName.getText(), "This field is required");
+		WebElement errorMessLastName = driver.findElement(error_message_last_name_field);
+		errorMessLastName.isDisplayed();
+		Assert.assertEquals(errorMessLastName.getText(), "This field is required");
+		WebElement errorMessDisplayName = driver.findElement(error_message_line_display_name_field);
+		errorMessDisplayName.isDisplayed();
+		Assert.assertEquals(errorMessDisplayName.getText(), "This field is required");
+		WebElement errorMessLineId = driver.findElement(error_message_line_id_field);
+		errorMessLineId.isDisplayed();
+		Assert.assertEquals(errorMessLineId.getText(), "This field is required");
+		WebElement errorMessNickName = driver.findElement(error_message_nick_name_field);
+		errorMessNickName.isDisplayed();
+		Assert.assertEquals(errorMessNickName.getText(), "This field is required");
+		WebElement errorMessPhoneField = driver.findElement(error_message_phone_field);
+		errorMessPhoneField.isDisplayed();
+		Assert.assertEquals(errorMessPhoneField.getText(), "This field is required");
+		Thread.sleep(2000);
+	}
+	
+	public void handle_constrain_validation_message () throws Exception {
+		//Steps to Handle the Constrain Validation Message
+		//1. Get the nearest xpath of an element such as input field, radio button, checkboxes
+		// 2. Get Attribute of it and compare to the result message
+		String message = driver.findElement(By.xpath("//*[@id=\"consent\"]/div[2]/div/label/input")).getAttribute("validationMessage");
+		Thread.sleep(2000);
+		System.out.println("Message is : "+ message);
+		Assert.assertEquals(message, "Please check this box if you want to proceed.");
+	}
+	
+	
 }

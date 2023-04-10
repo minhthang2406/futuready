@@ -33,7 +33,7 @@ public class TC_FU_002_SGN_Sign_Up_New_Account_In_Friends_Page {
 	  signupAccountPage2.setup_driver(baseSetup.driver);
   }
   
-  @Test
+  @Test 
   public void TC_FU_002_SGN_01_User_can_navigate_to_sign_up_a_new_account_page () throws Exception {
 	  System.out.print("TC_FU_002_SGN_01_User_can_navigate_to_sign_up_a_new_account_page");
 	  login.click_on_signup_btn();
@@ -41,7 +41,7 @@ public class TC_FU_002_SGN_Sign_Up_New_Account_In_Friends_Page {
 	  System.out.println(" -> DONE");
   }
   
-  @Test
+  @Test (enabled=true)
   public void TC_FU_002_SGN_02_User_can_sign_up_a_new_account () throws Exception {
 	  System.out.print("TC_FU_002_SGN_01_User_can_sign_up_a_new_account_page");
 	  signupAccountPage.input_first_name();
@@ -66,21 +66,94 @@ public class TC_FU_002_SGN_Sign_Up_New_Account_In_Friends_Page {
 	  signupAccountPage2.input_zip_code();
 	  signupAccountPage2.input_mailling_address();
 	  signupAccountPage2.input_bank_name();
+	  signupAccountPage2.input_bank_account_number();
+	  signupAccountPage2.input_bank_account_name();
+	  signupAccountPage2.input_bank_branch_name();
+	  signupAccountPage2.input_brank_branch_code();
+	  signupAccountPage2.upload_bank_account_image();
+	  signupAccountPage2.upload_national_id_scan_image();
+	  signupAccountPage2.select_referrer_dropdown_box();
+	  signupAccountPage2.click_on_checkbox_1();
+	  signupAccountPage2.click_on_next_button();
+	  signupAccountPage2.open_new_tab();
+	  signupAccountPage2.verify_email();
+	  //signupAccountPage2.click_on_submit_button();
 	  System.out.println(" -> DONE");
   }
   
-  @Test
+  @Test (enabled=false)
+  public void test () throws Exception {
+	  signupAccountPage2.open_new_tab();
+	  signupAccountPage2.verify_email();
+  }
+  
+  @Test(enabled=true)
   public void TC_FU_002_SGN_03_System_verifies_02_confirmation_checked_boxes_in_the_first_sign_up_page  () throws Exception {
-	  System.out.print("TC_FU_002_SGN_03_System_verifies_02_confirmation_checked_boxes_in_the_first_sign_up_page");
-	  
+	  System.out.println("TC_FU_002_SGN_03_System_verifies_02_confirmation_checked_boxes_in_the_first_sign_up_page");
+	  login.navigate_to_login_page();
+	  login.click_on_signup_btn();
+	  signupAccountPage.input_first_name();
+	  signupAccountPage.input_last_name();
+	  signupAccountPage.select_title();
+	  signupAccountPage.input_nick_name();
+	  signupAccountPage.input_email_address();
+	  signupAccountPage.input_phone_number();
+	  signupAccountPage.input_line_id();
+	  signupAccountPage.input_line_display_name();
+	  signupAccountPage.scroll_down_to_bottom();
+	  signupAccountPage.click_on_agree_and_next_button();
+	  signupAccountPage.handle_constrain_validation_message();
 	  System.out.println(" -> DONE");
   }
   
-  @Test
+  @Test(enabled=true)
   public void TC_FU_002_SGN_04_System_verifies_required_fields_in_the_first_signup_page  () throws Exception {
 	  System.out.print("TC_FU_002_SGN_04_System_verifies_required_fields_in_the_first_signup_page");
-	  
+	  login.navigate_to_login_page();
+	  login.click_on_signup_btn();
+	  signupAccountPage.scroll_down_to_bottom();
+	  signupAccountPage.select_checkbox_1();
+	  //signupAccountPage.select_checkbox_2();
+	  signupAccountPage.click_on_agree_and_next_button();
+	  signupAccountPage.verify_blank_fields(); 
 	  System.out.println(" -> DONE");
+  }
+  
+  @Test (enabled=true)
+  public void TC_FU_002_SGN_05_System_verifies_02_confirmation_checked_boxes_in_the_second_sign_up_page () throws Exception {
+	  signupAccountPage.input_first_name();
+	  signupAccountPage.input_last_name();
+	  signupAccountPage.select_title();
+	  signupAccountPage.input_nick_name();
+	  signupAccountPage.input_email_address();
+	  signupAccountPage.input_phone_number();
+	  signupAccountPage.input_line_id();
+	  signupAccountPage.input_line_display_name();
+	  signupAccountPage.scroll_down_to_bottom();
+	  signupAccountPage.click_on_agree_and_next_button();
+	  signupAccountPage2.input_national_id_number();
+	  signupAccountPage2.select_date_of_birth();
+	  signupAccountPage.scroll_down_to_bottom();
+	  signupAccountPage2.select_province();
+	  signupAccountPage2.select_district();
+	  signupAccountPage2.select_sub_district();
+	  signupAccountPage2.input_zip_code();
+	  signupAccountPage2.input_mailling_address();
+	  signupAccountPage2.input_bank_name();
+	  signupAccountPage2.input_bank_account_number();
+	  signupAccountPage2.input_bank_account_name();
+	  signupAccountPage2.input_bank_branch_name();
+	  signupAccountPage2.input_brank_branch_code();
+	  signupAccountPage2.upload_bank_account_image();
+	  signupAccountPage2.upload_national_id_scan_image();
+	  signupAccountPage2.select_referrer_dropdown_box();
+	  signupAccountPage2.click_on_next_button_for_checking_alert_message();
+	  signupAccountPage2.handle_constrain_validation_message();
+  }
+  
+  @Test (enabled=true)
+  public void TC_FU_002_SGN_06_Sytem_verifies_required_fields_in_the_second_sign_up_page () throws Exception {
+	  signupAccountPage2.verify_elements();
   }
 
   @AfterTest
