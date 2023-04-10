@@ -81,11 +81,7 @@ public class TC_FU_002_SGN_Sign_Up_New_Account_In_Friends_Page {
 	  System.out.println(" -> DONE");
   }
   
-  @Test (enabled=false)
-  public void test () throws Exception {
-	  signupAccountPage2.open_new_tab();
-	  signupAccountPage2.verify_email();
-  }
+
   
   @Test(enabled=true)
   public void TC_FU_002_SGN_03_System_verifies_02_confirmation_checked_boxes_in_the_first_sign_up_page  () throws Exception {
