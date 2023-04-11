@@ -1,10 +1,12 @@
 package futuready.base;
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
 
 import java.util.Scanner;
 public class baseSetup {
@@ -13,8 +15,30 @@ public class baseSetup {
 		//Khai bao
 		public static String test_url;
 		public static WebDriver driver;
-		
+		public String tester_name = "Minh Thang Tran";
+		public String  tester_mail = "thang.tran@itads.net";
+		public String company = "Itads.Co,ltd";
 		//Function
+		public String get_current_date () throws Exception {
+			 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+			 LocalDateTime now = LocalDateTime.now();  
+			 System.out.println(dtf.format(now));  
+			 String output_date_time = dtf.format(now);
+			 return output_date_time;
+		}
+		public String get_root_directory () throws Exception {
+			String dir = System.getProperty("user.dir");
+			System.out.println(dir);
+			return dir;
+		}
+		
+		public String get_directory_of_testing_files () throws Exception {
+			String directory = get_root_directory();
+			String files_directory = directory + "\\Images\\aaa.jpg";
+			System.out.println(files_directory);
+			return files_directory;
+		}
+		
 		public static void wellcome () throws Exception {
 			System.out.println("Automated Testing Program");
 			System.out.println("Project : Futuready");

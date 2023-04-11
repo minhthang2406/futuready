@@ -21,7 +21,10 @@ import java.sql.Array;
 import java.awt.datatransfer.StringSelection;
 public class sign_up_account_page_2 {
 WebDriver driver;	
+baseSetup setup = new baseSetup();
 private String email_address = "agencytester22@mailsac.com";
+public String validation_checkbox_message_xpath = "//*[@id=\\\"consent\\\"]/div[1]/div/label/input";
+public String constrain_validation_message = "Please check this box if you want to proceed.";	
 	//Locators
 	private By date_of_birth_label = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[1]/div[1]/div[1]/label[1]");
 	private By national_id_label = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[1]/div[1]/div[2]/label[1]");
@@ -31,7 +34,7 @@ private String email_address = "agencytester22@mailsac.com";
 	private By date_of_birth_selected_date = By.xpath("//span[contains(text(),'24')]");
 	private By mailing_address_label = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[2]/div[1]/div[1]/label[1]");
 	private By mailing_address_field = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[2]/div[1]/div[1]/div[1]/textarea[1]");
-	private By province_label = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[2]/div[1]/div[1]/div[1]/textarea[1]");
+	private By province_label = By.xpath("//*[@id=\"__layout\"]/div/div/section/div/div[3]/div/form/div[3]/div/div[1]/label");
 	private By province_dropdown = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[3]/div[1]/div[1]/div[1]/span[1]/select[1]");
 	private By province_selected = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[3]/div[1]/div[1]/div[1]/span[1]/select[1]/option[3]");
 	private By district_label = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[3]/div[1]/div[2]/label[1]");
@@ -76,36 +79,76 @@ private String email_address = "agencytester22@mailsac.com";
 	public void verify_elements () throws Exception {
 		WebElement dateOofBirthLabel = driver.findElement(date_of_birth_label);
 		dateOofBirthLabel.isDisplayed();
+		Assert.assertEquals(dateOofBirthLabel.getText(), "DATE OF BIRTH");
 		WebElement dateOfBirthField = driver.findElement(date_of_birth_field);
 		dateOfBirthField.isDisplayed();
 		WebElement dateOfBirthYearDropDown = driver.findElement(date_of_birth_year_dropdown);
 		dateOfBirthYearDropDown.isDisplayed();
 		WebElement nationalIdLabel = driver.findElement(national_id_label);
 		nationalIdLabel.isDisplayed();
+		Assert.assertEquals(nationalIdLabel.getText(), "NATIONAL ID NUMBER");
 		WebElement nationalIdField = driver.findElement(national_id_field);
 		nationalIdField.isDisplayed();
 		WebElement maillingAddressLabel = driver.findElement(mailing_address_label);
 		maillingAddressLabel.isDisplayed();
+		Assert.assertEquals(maillingAddressLabel.getText(), "MAILING ADDRESS");
 		WebElement maillingAddressField = driver.findElement(mailing_address_field);
 		maillingAddressField.isDisplayed();
 		WebElement provinceLabel = driver.findElement(province_label);
 		provinceLabel.isDisplayed();
+		Assert.assertEquals(provinceLabel.getText(), "PROVINCE");
 		WebElement provinceDropdown = driver.findElement(province_dropdown);
 		provinceDropdown.isDisplayed();
 		WebElement districtLabel = driver.findElement(district_label);
 		districtLabel.isDisplayed();
+		Assert.assertEquals(districtLabel.getText(), "DISTRICT");
 		WebElement districtField = driver.findElement(district_label);
 		districtField.isDisplayed();
 		WebElement subDistrictDropdown = driver.findElement(sub_district_dropdown);
 		subDistrictDropdown.isDisplayed();
 		WebElement zipCode = driver.findElement(zip_code);
 		zipCode.isDisplayed();
+		Assert.assertEquals(zipCode.getText(), "ZIP CODE");
 		WebElement zipCodeField = driver.findElement(zip_code);
 		zipCodeField.isDisplayed();
 		WebElement bankNameLabel = driver.findElement(bank_name_label);
 		bankNameLabel.isDisplayed();
+		Assert.assertEquals(bankNameLabel.getText(), "BANK NAME");
 		WebElement bankNameField = driver.findElement(bank_name_field);
 		bankNameField.isDisplayed();
+		WebElement bankAccountNumber = driver.findElement(bank_account_number);
+		bankAccountNumber.isDisplayed();
+		Assert.assertEquals(bankAccountNumber.getText(), "BANK ACCOUNT NUMBER");
+		WebElement bankAccountField = driver.findElement(bank_account_number_field);
+		bankAccountField.isDisplayed();
+		WebElement bankAccountScanImageLabel = driver.findElement(bank_account_scan_image_label);
+		bankAccountScanImageLabel.isDisplayed();
+		Assert.assertEquals(bankAccountScanImageLabel.getText(), "BANK ACCOUNT SCAN IMAGE");
+		WebElement bankAccountScanImageFileBtn = driver.findElement(bank_account_scan_image_file_button);
+		bankAccountScanImageFileBtn.isDisplayed();
+		WebElement nationalIdScanLabel = driver.findElement(national_id_scan_label);
+		nationalIdScanLabel.isDisplayed();
+		Assert.assertEquals(nationalIdScanLabel.getText(), "NATIONAL ID SCAN IMAGE");
+		WebElement nationalIdScanButton = driver.findElement(national_id_scan_file_button);
+		nationalIdScanButton.isDisplayed();
+		WebElement referrerSelectedLabel = driver.findElement(referrer_selected_label);
+		referrerSelectedLabel.isDisplayed();
+		Assert.assertEquals(referrerSelectedLabel.getText(), "I was refferred to FRIENDS by an existing referrer");
+		WebElement referrerSelectedDropdownBox = driver.findElement(referrer_selected_dropdown);
+		referrerSelectedDropdownBox.isDisplayed();
+		WebElement confirmationText1 = driver.findElement(confirmation_text_1);
+		confirmationText1.isDisplayed();
+		Assert.assertEquals(confirmationText1.getText(), "xI agree and accept that the fees which may have been paid by the Company to me as a referrer. Such fee rates shall be specified by the Company and may be changed from time to time as the Company deems appropriate without notifying me in advance and consenting.");
+		WebElement confirmationText2 = driver.findElement(confirmation_text_2);
+		confirmationText2.isDisplayed();
+		Assert.assertEquals(confirmationText2.getText(), "x󠆮I agree and accept the Terms and Conditions for this service, and which may be revised in the future that shall be considered part of this registration form.");
+		WebElement chechbox1 = driver.findElement(checkbox_1);
+		chechbox1.isDisplayed();
+		WebElement chechbox2 = driver.findElement(checkbox_1);
+		chechbox2.isDisplayed();
+		WebElement agree_Text = driver.findElement(agreeText);
+		agree_Text.isDisplayed();
+		Assert.assertEquals(agree_Text.getText(), "I agree and accept that the Company may change the conditions or suspend the use of the services without notifying me in advance.");
 	}
 	
 	public void select_date_of_birth () throws Exception {
@@ -240,8 +283,9 @@ private String email_address = "agencytester22@mailsac.com";
 
 		   Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 		//Set the String to Enter
-
-		   StringSelection selectedString = new StringSelection("G:\\eclipse new\\futuready\\Images\\aaa.jpg");
+		   String file_path = setup.get_directory_of_testing_files();
+		   StringSelection selectedString = new StringSelection(file_path);
+		   //StringSelection selectedString = new StringSelection("G:\\eclipse new\\futuready\\Images\\aaa.jpg");
 		//Copy the String to Clipboard
 
 		   clipboard.setContents(selectedString, null);
@@ -267,8 +311,9 @@ private String email_address = "agencytester22@mailsac.com";
 
 		   Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 		//Set the String to Enter
-
-		   StringSelection selectedString = new StringSelection("G:\\eclipse new\\futuready\\Images\\aaa.jpg");
+		   String file_path = setup.get_directory_of_testing_files();
+		   StringSelection selectedString = new StringSelection(file_path);
+		  // StringSelection selectedString = new StringSelection("G:\\eclipse new\\futuready\\Images\\aaa.jpg");
 		//Copy the String to Clipboard
 
 		   clipboard.setContents(selectedString, null);
@@ -432,5 +477,6 @@ private String email_address = "agencytester22@mailsac.com";
 		System.out.println("Message is : "+ message);
 		Assert.assertEquals(message, "Please check this box if you want to proceed.");
 	}
+	
 	
 }

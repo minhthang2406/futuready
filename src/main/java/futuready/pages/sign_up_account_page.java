@@ -18,7 +18,12 @@ import java.awt.event.KeyEvent;
 import java.time.Duration;
 public class sign_up_account_page {
 	public static WebDriver driver;
-	private String email_address = "agencytester22@mailsac.com";
+	public String email_address = "agencytester22@mailsac.com";
+	public String wrong_email_address = "agencytester22mailsac.com";
+	//Validate required field
+	public String constrain_validation_message_1 = "Please check this box if you want to proceed.";	
+	public String validation_message_xpath = "//*[@id=\\\"consent\\\"]/div[2]/div/label/input";
+	
 	//Locators
 	private By signup_label = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/h2[1]");
 	private By first_name_label = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[1]/div[1]/div[1]/label[1]");
@@ -34,6 +39,7 @@ public class sign_up_account_page {
 	private By nick_name_field = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[2]/div[1]/div[2]/div[1]/input[1]");
 	private By email_address_label = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[3]/div[1]/div[1]/label[1]");
 	private By email_address_field = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[3]/div[1]/div[1]/div[1]/input[1]");
+	private By wrong_message_of_invalid_email = By.xpath("//*[@id=\"__layout\"]/div/div/section/div/div[3]/div/form/div[3]/div/div[1]/p");
 	private By phone_label = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[3]/div[1]/div[2]/label[1]");
 	private By phone_field = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/input[1]");
 	private By line_id_label = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[4]/div[1]/div[1]/label[1]");
@@ -138,9 +144,10 @@ public class sign_up_account_page {
 		Thread.sleep(1000);
 	}
 	
-	public void input_email_address () throws Exception {
+	public void input_email_address (String emailInput) throws Exception {
 		WebElement inputEmailAddress = driver.findElement(email_address_field);
-		inputEmailAddress.sendKeys(email_address);
+		//inputEmailAddress.sendKeys(email_address);
+		inputEmailAddress.sendKeys(emailInput);
 		Thread.sleep(1000);
 	}
 	
@@ -214,6 +221,7 @@ public class sign_up_account_page {
 		Thread.sleep(2000);
 	}
 	
+	
 	public void handle_constrain_validation_message () throws Exception {
 		//Steps to Handle the Constrain Validation Message
 		//1. Get the nearest xpath of an element such as input field, radio button, checkboxes
@@ -223,6 +231,30 @@ public class sign_up_account_page {
 		System.out.println("Message is : "+ message);
 		Assert.assertEquals(message, "Please check this box if you want to proceed.");
 	}
+	
+	
+	public void display_wrong_message_of_invalid_email () throws Exception {
+		WebElement wrongMessage = driver.findElement(wrong_message_of_invalid_email);
+		wrongMessage.isDisplayed();
+	}
+	
+	public void handle_constrain_validation_email_message () throws Exception {
+		//Steps to Handle the Constrain Validation Message
+		//1. Get the nearest xpath of an element such as input field, radio button, checkboxes
+		// 2. Get Attribute of it and compare to the result message
+		//String message = driver.findElement(By.xpath("//*[@id=\"consent\"]/div[1]/div/label/input")).getAttribute("validationMessage");
+		//Validate Email
+		String validation_email_message_xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[3]/div[1]/div[1]/div[1]/input[1]";
+		String constrain_email_validation_message = "Please include an '@' in the email address. '" + wrong_email_address + "' is missing an '@'.";
+		String message = driver.findElement(By.xpath(validation_email_message_xpath)).getAttribute("validationMessage");
+		Thread.sleep(2000);
+		System.out.println("Message is : " + message);
+		//Assert.assertEquals(message, "Please check this box if you want to proceed.");
+		Assert.assertEquals(message,constrain_email_validation_message);
+		Thread.sleep(2000);
+	}
+
+	
 	
 	
 }

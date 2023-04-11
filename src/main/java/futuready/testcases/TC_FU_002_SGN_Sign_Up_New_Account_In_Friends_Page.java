@@ -1,5 +1,20 @@
 package futuready.testcases;
-
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;    
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
@@ -14,26 +29,33 @@ public class TC_FU_002_SGN_Sign_Up_New_Account_In_Friends_Page {
   baseSetup setup = new baseSetup();
   dashboard_page dashboard = new dashboard_page();
   login_page login = new login_page();
+  reported_email_sending reported_mail = new reported_email_sending(); 
   login_with_user_name_and_password_page loginWithUserAndPass = new login_with_user_name_and_password_page(); 
   forgot_password_page forgotPasswordPage = new forgot_password_page();
   sign_up_account_page signupAccountPage = new sign_up_account_page();
   sign_up_account_page_2 signupAccountPage2 = new sign_up_account_page_2();
+  String reported_email_subject = "[Test Report] | Scenario TC-FU-002-SGN-Sign Up New Account In Friends Page ";
+  String scenario_name = "TC-FU-002-SGN-Sign Up New Account In Friends Page";
+  
   @BeforeTest
   public void beforeTest() throws Exception {
-	  setup.wellcome();
-	  setup.select_test_server();
+	  baseSetup.wellcome();
+	  setup.get_root_directory();
+	  setup.get_directory_of_testing_files();
+	  baseSetup.select_test_server();
 	  setup.select_test_browser();
 	  System.out.println("[Start Testing]");
 	  System.out.println("[Test Scenario] : TC_FU_002_SGN_Sign_Up_New_Account_In_Friends_Page");
 	  login.setup_driver(baseSetup.driver);
 	  loginWithUserAndPass.setup_driver(baseSetup.driver);
 	  forgotPasswordPage.setup(baseSetup.driver);
+	  
 	  dashboard.setup(baseSetup.driver);
 	  signupAccountPage.setup_driver(baseSetup.driver);
 	  signupAccountPage2.setup_driver(baseSetup.driver);
   }
   
-  @Test 
+  @Test (enabled=true)
   public void TC_FU_002_SGN_01_User_can_navigate_to_sign_up_a_new_account_page () throws Exception {
 	  System.out.print("TC_FU_002_SGN_01_User_can_navigate_to_sign_up_a_new_account_page");
 	  login.click_on_signup_btn();
@@ -48,7 +70,7 @@ public class TC_FU_002_SGN_Sign_Up_New_Account_In_Friends_Page {
 	  signupAccountPage.input_last_name();
 	  signupAccountPage.select_title();
 	  signupAccountPage.input_nick_name();
-	  signupAccountPage.input_email_address();
+	  signupAccountPage.input_email_address(signupAccountPage.email_address);
 	  signupAccountPage.input_phone_number();
 	  signupAccountPage.input_line_id();
 	  signupAccountPage.input_line_display_name();
@@ -92,7 +114,7 @@ public class TC_FU_002_SGN_Sign_Up_New_Account_In_Friends_Page {
 	  signupAccountPage.input_last_name();
 	  signupAccountPage.select_title();
 	  signupAccountPage.input_nick_name();
-	  signupAccountPage.input_email_address();
+	  signupAccountPage.input_email_address(signupAccountPage.email_address);
 	  signupAccountPage.input_phone_number();
 	  signupAccountPage.input_line_id();
 	  signupAccountPage.input_line_display_name();
@@ -117,11 +139,12 @@ public class TC_FU_002_SGN_Sign_Up_New_Account_In_Friends_Page {
   
   @Test (enabled=true)
   public void TC_FU_002_SGN_05_System_verifies_02_confirmation_checked_boxes_in_the_second_sign_up_page () throws Exception {
+	  System.out.print("TC_FU_002_SGN_05_System_verifies_02_confirmation_checked_boxes_in_the_second_sign_up_page");
 	  signupAccountPage.input_first_name();
 	  signupAccountPage.input_last_name();
 	  signupAccountPage.select_title();
 	  signupAccountPage.input_nick_name();
-	  signupAccountPage.input_email_address();
+	  signupAccountPage.input_email_address(signupAccountPage.email_address);
 	  signupAccountPage.input_phone_number();
 	  signupAccountPage.input_line_id();
 	  signupAccountPage.input_line_display_name();
@@ -145,16 +168,40 @@ public class TC_FU_002_SGN_Sign_Up_New_Account_In_Friends_Page {
 	  signupAccountPage2.select_referrer_dropdown_box();
 	  signupAccountPage2.click_on_next_button_for_checking_alert_message();
 	  signupAccountPage2.handle_constrain_validation_message();
+	  System.out.println(" -> DONE");
   }
   
   @Test (enabled=true)
   public void TC_FU_002_SGN_06_Sytem_verifies_required_fields_in_the_second_sign_up_page () throws Exception {
+	  System.out.println("TC_FU_002_SGN_06_Sytem_verifies_required_fields_in_the_second_sign_up_page");
 	  signupAccountPage2.verify_elements();
+	  System.out.println(" -> DONE");
+  }
+  
+  @Test (enabled=true)
+  public void TC_FU_002_SGN_07_System_verifies_the_email_address_from_user () throws Exception {
+	  System.out.println("TC_FU_002_SGN_07_System_verifies_the_email_address_from_user");
+	  login.navigate_to_login_page();
+	  login.click_on_signup_btn();
+	  signupAccountPage.input_first_name();
+	  signupAccountPage.input_last_name();
+	  signupAccountPage.select_title();
+	  signupAccountPage.input_nick_name();
+	  signupAccountPage.input_email_address(signupAccountPage.wrong_email_address);
+	  signupAccountPage.input_phone_number();
+	  signupAccountPage.input_line_id();
+	  signupAccountPage.input_line_display_name();
+	  signupAccountPage.scroll_down_to_bottom();
+	  signupAccountPage.click_on_agree_and_next_button();
+	  signupAccountPage.display_wrong_message_of_invalid_email();
+	  signupAccountPage.handle_constrain_validation_email_message();
+	  System.out.println(" -> DONE");
   }
 
   @AfterTest
   public void afterTest() throws Exception  {
-	  Thread.sleep(2000);
+	  reported_mail.sending_reported_email(reported_email_subject,reported_mail.report_email_body(scenario_name));
+	  Thread.sleep(5000);
 	  login.quit();
   }
 
