@@ -18,6 +18,7 @@ public class baseSetup {
 		public String tester_name = "Minh Thang Tran";
 		public String  tester_mail = "thang.tran@itads.net";
 		public String company = "Itads.Co,ltd";
+		public String project_name = "Futuready";
 		//Function
 		public String get_current_date () throws Exception {
 			 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  

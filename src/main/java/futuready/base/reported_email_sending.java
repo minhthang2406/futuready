@@ -23,14 +23,14 @@ public class reported_email_sending {
 	String sending_mail_box_password = "Thang2406@";
     
 	public String report_email_body (String scenario) throws Exception {
-		  String title = "[Automated Test Report]";
+		  String title = "💽 [Automated Test Report]";
 		  String test_scenario = scenario;
 		  String date = setup.get_current_date();
 		  String tester = "Tester :" + setup.tester_name;
 		  String file_check_message = "Please checking on attachments";
 		  String os = "System operation :"+System.getProperty("os.name");
 		  String java = "Java version :" + System.getProperty("java.runtime.version" );
-		  String full_body = title + "\n" + date + "\n" + tester + "\n" + test_scenario + "\n" + os + "\n" + java + "\n" + file_check_message + 
+		  String full_body = title + "\n" + date + "\n"+ "Project :" + setup.project_name + "\n" + tester + "\n" + test_scenario + "\n" + os + "\n" + java + "\n" + file_check_message + 
 		  "\n\n\n" + "-----------------------------" + "\n" + setup.company + "\n" + setup.tester_name + "\n" + setup.tester_mail ;  
 		  return full_body;
 	  }

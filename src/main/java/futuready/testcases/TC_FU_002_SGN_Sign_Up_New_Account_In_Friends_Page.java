@@ -34,8 +34,8 @@ public class TC_FU_002_SGN_Sign_Up_New_Account_In_Friends_Page {
   forgot_password_page forgotPasswordPage = new forgot_password_page();
   sign_up_account_page signupAccountPage = new sign_up_account_page();
   sign_up_account_page_2 signupAccountPage2 = new sign_up_account_page_2();
-  String reported_email_subject = "[Test Report] | Scenario TC-FU-002-SGN-Sign Up New Account In Friends Page ";
-  String scenario_name = "TC-FU-002-SGN-Sign Up New Account In Friends Page";
+  String reported_email_subject = "📺 [Test Report] | Scenario TC-FU-002-SGN-Sign Up New Account In Friends Page ";
+  String scenario_name = "📔 TC-FU-002-SGN-Sign Up New Account In Friends Page";
   
   @BeforeTest
   public void beforeTest() throws Exception {
@@ -196,6 +196,44 @@ public class TC_FU_002_SGN_Sign_Up_New_Account_In_Friends_Page {
 	  signupAccountPage.display_wrong_message_of_invalid_email();
 	  signupAccountPage.handle_constrain_validation_email_message();
 	  System.out.println(" -> DONE");
+  }
+  
+  @Test (enabled=true)
+  public void TC_FU_002_SGN_08_System_verifies_the_phone_number_from_user () throws Exception {
+	  System.out.println("TC_FU_002_SGN_08_System_verifies_the_phone_number_from_user");
+	  login.navigate_to_login_page();
+	  login.click_on_signup_btn();
+	  signupAccountPage.input_first_name();
+	  signupAccountPage.input_last_name();
+	  signupAccountPage.select_title();
+	  signupAccountPage.input_nick_name();
+	  signupAccountPage.input_email_address(signupAccountPage.email_address);
+	  signupAccountPage.input_wrong_phone_number();
+	  signupAccountPage.input_line_id();
+	  signupAccountPage.input_line_display_name();
+	  signupAccountPage.scroll_down_to_bottom();
+	  signupAccountPage.click_on_agree_and_next_button();
+	  signupAccountPage.validate_phone_message();
+	  System.out.println(" -> DONE");
+  }
+  
+  @Test(enabled=true)
+  public void TC_FU_002_SGN_09_User_can_sign_up_a_new_account_by_thai_language () throws Exception {
+	  login.navigate_to_login_page();
+	  login.click_on_signup_btn();
+	  signupAccountPage.input_first_name_thai();
+	  signupAccountPage.input_last_name_thai();
+	  signupAccountPage.select_title();
+	  signupAccountPage.input_nick_name_thai();
+	  signupAccountPage.input_email_address(signupAccountPage.email_address);
+	  signupAccountPage.input_phone_number();
+	  signupAccountPage.input_line_id();
+	  signupAccountPage.input_line_display_name();
+	  signupAccountPage.scroll_down_to_bottom();
+	  signupAccountPage.select_checkbox_1();
+	  signupAccountPage.select_checkbox_2();
+	  signupAccountPage.click_on_agree_and_next_button();
+	  signupAccountPage2.verify_elements();
   }
 
   @AfterTest
