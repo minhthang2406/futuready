@@ -107,58 +107,8 @@ public class login_page {
 		Thread.sleep(2000);
 	}
 	
-	public void TC_FU_001_LGI_01 () throws Exception {
-		Thread.sleep(4000);
-		WebElement logo_app = driver.findElement(logo);
-		WebElement loginLabel = driver.findElement(login_label);
-		WebElement languageBtn = driver.findElement(language_btn);
-		WebElement loginWithLineBtn = driver.findElement(login_with_line_btn);
-		WebElement loginWithUserNameLabelText = driver.findElement(login_with_username_label_text);
-		WebElement signUpLabelText = driver.findElement(signup_label_text);
-		WebElement signUpWithLineBtn = driver.findElement(signup_with_line_btn);
-		
-		logo_app.isDisplayed();
-		loginLabel.isDisplayed();
-		languageBtn.isDisplayed();
-		loginWithLineBtn.isDisplayed();
-		loginWithUserNameLabelText.isDisplayed();
-		signUpLabelText.isDisplayed();
-		signUpWithLineBtn.isDisplayed();
-	}
 	
-	public void TC_FU_001_LGI_02 () throws Exception {
-		Thread.sleep(3000);
-		WebElement languageBtn = driver.findElement(language_btn);
-		languageBtn.click();
-		Thread.sleep(2000);
-		WebElement languageBtn_after_click = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/a[1]"));
-		languageBtn_after_click.click();
-	}
 	
-	public void TC_FU_001_LGI_03 () throws Exception {
-		
-		
-	}
-	
-	public void TC_FU_001_LGI_04 () throws Exception {
-		
-	}
-	
-	public void TC_FU_001_LGI_05 () throws Exception {
-		
-	}
-	
-	public void TC_FU_001_LGI_06 () throws Exception {
-		
-	}
-	
-	public void TC_FU_001_LGI_07 () throws Exception {
-		
-	}
-	
-	public void TC_FU_001_LGI_08 () throws Exception {
-		
-	}
 
 	public void quit() throws Exception {
 		driver.quit();

@@ -61,7 +61,7 @@ public class reported_email_sending {
 
 							protected PasswordAuthentication getPasswordAuthentication() {
 
-							return new PasswordAuthentication("agencytester22@gmx.com", "Thang2406@");
+							return new PasswordAuthentication("itads.tester@gmx.com", "Thang2406@");
 
 							}
 
@@ -72,7 +72,7 @@ public class reported_email_sending {
 					Message message = new MimeMessage(session);
 
 					// Set the from address
-					message.setFrom(new InternetAddress("agencytester22@gmx.com"));
+					message.setFrom(new InternetAddress("itads.tester@gmx.com"));
 
 					// Set the recipient address
 					message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(receive_mail_box));

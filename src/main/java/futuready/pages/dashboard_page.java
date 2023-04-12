@@ -46,4 +46,9 @@ public class dashboard_page {
 		logoutBtn.click();
 		Thread.sleep(2000);
 	}
+	
+	public void navigate_to_profile () throws Exception {
+		WebElement myProfileBtn = driver.findElement(my_profile_btn);
+		myProfileBtn.click();
+	}
 }
