@@ -66,13 +66,32 @@ public class TC_FU_003_PRO_My_Profile {
 	  loginWithUserAndPass.click_login_btn();
 	  dashboard.navigate_to_profile();
 	  profilePage.verify_elements();
+	 
 	  
+  }
+  
+  @Test (enabled=true)
+  public void TC_FU_003_PRO_0_User_can_change_password_of_account () throws Exception {
+	  profilePage.click_on_edit_password_btn();
+	  profilePage.change_password(profilePage.newPassWord,login_with_user_name_and_password_page.password_input);
+	  login.click_on_button_to_login_with_username_and_password();
+	  loginWithUserAndPass.input_username(login_with_user_name_and_password_page.username_input);
+	  loginWithUserAndPass.input_password(profilePage.newPassWord);
+	  loginWithUserAndPass.click_login_btn();
+	  dashboard.navigate_to_profile();
+	  profilePage.click_on_edit_password_btn();
+	  profilePage.change_password(login_with_user_name_and_password_page.password_input,profilePage.newPassWord);
+	  login.click_on_button_to_login_with_username_and_password();
+	  loginWithUserAndPass.input_username(login_with_user_name_and_password_page.username_input);
+	  loginWithUserAndPass.input_password(login_with_user_name_and_password_page.password_input);
+	  loginWithUserAndPass.click_login_btn();
+	  dashboard.verify_elements();
   }
 
   @AfterTest
   public void afterTest() throws Exception {
 	  reportedMail.sending_reported_email(reported_email_subject,reportedMail.report_email_body(scenario_name));
-	  Thread.sleep(5000);
+	  Thread.sleep(1000);
 	  login.quit();
   }
 

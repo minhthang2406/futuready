@@ -7,7 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 public class myprofile_page {
+public static String newPassWord = "Init12345";
 WebDriver driver;
+//String public newPassWord = "Init12345";
 login_with_user_name_and_password_page loginWithUserAndPass = new login_with_user_name_and_password_page(); 
 //Locators
 private By personal_info_label = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div[1]/div");
@@ -26,7 +28,15 @@ private By terms_condition_button = By.xpath("//*[@id=\"__layout\"]/div/div/main
 private By privacy_policy_TH = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div[2]/ul/li[3]/p[1]");
 private By privacy_policy_button = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div[2]/ul/li[2]/p[2]/a");
 private By logout_button = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div[3]/button");
-
+private By edit_password_button = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div[1]/ul/li[2]/div/a");
+private By current_password_label = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[2]/div[2]/div/label");
+private By current_password_field = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[2]/div[2]/div/div/input");
+private By enter_new_password_label = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[2]/div[3]/div/label");
+private By confirm_new_password_label = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[2]/div[4]/div/label");
+private By enter_new_password_field = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[2]/div[3]/div/div/input");
+private By confirm_new_password_field = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[2]/div[4]/div/div/input");
+private By submit_button = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[3]/div/button");
+private By popup_change_password_successfully = By.xpath("/div/div[2]/div/section/div[1]");
 //Functions
 public void setup_driver (WebDriver driver) throws  Exception {
 	this.driver = driver;	
@@ -73,5 +83,26 @@ public void verify_elements () throws Exception {
 	logoutBtn.isDisplayed();
 	Thread.sleep(2000);
 }
+
+public void click_on_edit_password_btn () throws Exception {
+	WebElement editPasswordBtn = driver.findElement(edit_password_button);
+	editPasswordBtn.click();
+	Thread.sleep(2000);
+}
+
+public void change_password (String new_password, String current_password) throws Exception {
+	WebElement currentPasswordField = driver.findElement(current_password_field);
+	currentPasswordField.clear();
+	currentPasswordField.sendKeys(current_password);
+	WebElement newPassWordField = driver.findElement(enter_new_password_field);
+	newPassWordField.sendKeys(new_password);
+	WebElement confirmNewPassword = driver.findElement(confirm_new_password_field);
+	confirmNewPassword.sendKeys(new_password);
+	Thread.sleep(1500);
+	WebElement submitButton = driver.findElement(submit_button);
+	submitButton.click();
+	Thread.sleep(4000);
+}
+
 
 }
