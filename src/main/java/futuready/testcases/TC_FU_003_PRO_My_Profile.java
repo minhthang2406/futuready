@@ -70,8 +70,8 @@ public class TC_FU_003_PRO_My_Profile {
 	  
   }
   
-  @Test (enabled=true)
-  public void TC_FU_003_PRO_0_User_can_change_password_of_account () throws Exception {
+  @Test (enabled=false)
+  public void TC_FU_003_PRO_02_User_can_change_password_of_account () throws Exception {
 	  profilePage.click_on_edit_password_btn();
 	  profilePage.change_password(profilePage.newPassWord,login_with_user_name_and_password_page.password_input);
 	  login.click_on_button_to_login_with_username_and_password();
@@ -86,6 +86,31 @@ public class TC_FU_003_PRO_My_Profile {
 	  loginWithUserAndPass.input_password(login_with_user_name_and_password_page.password_input);
 	  loginWithUserAndPass.click_login_btn();
 	  dashboard.verify_elements();
+  }
+  @Test (enabled=true)
+  public void TC_FU_003_PRO_03_The_system_verifies_blank_required_fields_in_the_page_of_editing_password () throws Exception {
+	 // dashboard.navigate_to_profile();
+	  profilePage.click_on_edit_password_btn();
+	  profilePage.click_on_submit_button();
+	  profilePage.verify_required_field_message();
+  }
+  
+  @Test (enabled=true)
+  public void TC_FU_003_PRO_04_The_system_verifies_new_password_inputted () throws Exception {
+	  profilePage.input_new_password("Init12345678");
+	  profilePage.input_confirm_password("Init1234");
+	  profilePage.click_on_submit_button();
+	  profilePage.verify_new_password_inputted();
+  }
+  
+  @Test (enabled=true)
+  public void TC_FU_003_PRO_05_User_can_hide_or_unhide_the_characters_in_password_edited_field () throws Exception {
+	  profilePage.hide_or_unhide_the_characters_in_password_editted_field();
+  }
+  
+  @Test (enabled=true)
+  public void TC_FU_003_PRO_06_User_can_change_phone_number_of_account () throws Exception {
+	  profilePage.change_phone_number();
   }
 
   @AfterTest

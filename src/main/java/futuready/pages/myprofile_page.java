@@ -2,6 +2,8 @@ package futuready.pages;
 
 import static org.testng.Assert.assertEquals;
 
+import java.util.Random;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,6 +39,17 @@ private By enter_new_password_field = By.xpath("//*[@id=\"__layout\"]/div/div/ma
 private By confirm_new_password_field = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[2]/div[4]/div/div/input");
 private By submit_button = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[3]/div/button");
 private By popup_change_password_successfully = By.xpath("/div/div[2]/div/section/div[1]");
+private By verify_required_field_message = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[2]/div[3]/div/p/div");
+private By verify_new_password_inputted = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[2]/div[4]/div/p/div");
+private By eye_icon_new_password_field = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[2]/div[3]/div/div/span/i");
+private By eye_icon_confirm_password_field = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[2]/div[4]/div/div/span/i");
+private By eye_icon_current_password_field = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[2]/div[2]/div/div/span/i");
+private By edit_phone_button = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div[1]/ul/li[3]/div/a");
+private By edit_phone_number_field = By.xpath("//*[@id=\"idPhone\"]");
+//Back button
+private By back_btn_from_edit_password_page = By.xpath("//*[@id=\"__layout\"]/div/div/nav/div/div[1]/a/span/i");
+//Change phone number
+private By submit_button_in_phone_page = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[3]/div/button");
 //Functions
 public void setup_driver (WebDriver driver) throws  Exception {
 	this.driver = driver;	
@@ -103,6 +116,82 @@ public void change_password (String new_password, String current_password) throw
 	submitButton.click();
 	Thread.sleep(4000);
 }
+
+public void input_new_password (String new_password) throws Exception {
+	WebElement newPassWordField = driver.findElement(enter_new_password_field);
+	newPassWordField.clear();
+	newPassWordField.sendKeys(new_password);
+}
+
+public void input_confirm_password (String new_password) throws Exception {
+	WebElement confirmNewPassword = driver.findElement(confirm_new_password_field);
+	confirmNewPassword.clear();
+	confirmNewPassword.sendKeys(new_password);
+}
+
+public void click_on_submit_button () throws Exception {
+	WebElement submitButton = driver.findElement(submit_button);
+	submitButton.click();
+	Thread.sleep(1000);
+}
+
+public void verify_required_field_message () throws Exception {
+	WebElement requiredFieldMessage = driver.findElement(verify_required_field_message);
+	requiredFieldMessage.isDisplayed();
+	Assert.assertEquals(requiredFieldMessage.getText(),"This field is required");
+	Thread.sleep(1000);
+}
+
+public void verify_new_password_inputted () throws Exception {
+	WebElement newPassWordField = driver.findElement(enter_new_password_field);
+	newPassWordField.sendKeys("Init1234567");
+	WebElement confirmNewPassword = driver.findElement(confirm_new_password_field);
+	confirmNewPassword.sendKeys("Init12345");
+	Thread.sleep(1500);
+	WebElement submitButton = driver.findElement(submit_button);
+	submitButton.click();
+	Thread.sleep(1000);
+	WebElement verifyNewPassword = driver.findElement(verify_new_password_inputted);
+	verifyNewPassword.isDisplayed();
+	Assert.assertEquals(verifyNewPassword.getText(), "New password is not the same");
+	Thread.sleep(1000);
+	confirmNewPassword.clear();
+	newPassWordField.clear();
+	
+}
+
+public void hide_or_unhide_the_characters_in_password_editted_field () throws Exception {
+	WebElement newPassWordField = driver.findElement(enter_new_password_field);
+	WebElement confirmNewPassword = driver.findElement(confirm_new_password_field);
+	WebElement eyeIconOnCurrentPasswordField = driver.findElement(eye_icon_current_password_field);
+	WebElement eyeIconOnNewPasswordField = driver.findElement(eye_icon_new_password_field);
+	WebElement eyeIconOnConfirmPasswordField = driver.findElement(eye_icon_confirm_password_field);
+	eyeIconOnCurrentPasswordField.click();
+	eyeIconOnNewPasswordField.click();
+	Assert.assertNotEquals(newPassWordField.getText(), "***********");
+	eyeIconOnConfirmPasswordField.click();
+	Assert.assertNotEquals(confirmNewPassword.getText(), "*********");
+	Thread.sleep(2000);
+	eyeIconOnCurrentPasswordField.click();
+	eyeIconOnNewPasswordField.click();
+	eyeIconOnConfirmPasswordField.click();
+}
+
+public void change_phone_number () throws Exception {
+	WebElement backBtnFromEditPasswordPage = driver.findElement(back_btn_from_edit_password_page);
+	backBtnFromEditPasswordPage.click();
+	WebElement editPhoneBtn = driver.findElement(edit_phone_button);
+	editPhoneBtn.click();
+	WebElement editPhoneNumberField = driver.findElement(edit_phone_number_field);
+	Random rand = new Random();
+	int phoneNumber = rand.nextInt(111111111,999999999);
+	String phoneNumberString = Integer.toString(phoneNumber);
+	editPhoneNumberField.sendKeys(phoneNumberString);
+	Thread.sleep(1000);
+	WebElement submitBtnInPhonePage = driver.findElement(submit_button_in_phone_page);
+	submitBtnInPhonePage.click();
+}
+
 
 
 }

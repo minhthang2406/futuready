@@ -5,7 +5,7 @@
     <classes>
       <class name="futuready.testcases.TC_FU_003_PRO_My_Profile">
         <methods>
-          <include name="TC_FU_003_PRO_0_User_can_change_password_of_account"/>
+          <include name="TC_FU_003_PRO_01_User_can_navigate_to_my_profile_page"/>
           <include name="afterTest"/>
           <include name="beforeTest"/>
         </methods>
