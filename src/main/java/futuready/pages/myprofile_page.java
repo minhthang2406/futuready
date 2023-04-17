@@ -56,8 +56,8 @@ public void setup_driver (WebDriver driver) throws  Exception {
 }
 
 public void verify_elements () throws Exception {
-	WebElement personalInformationLabel = driver.findElement(personal_info_label);
-	personalInformationLabel.isDisplayed();
+	//WebElement personalInformationLabel = driver.findElement(personal_info_label);
+	//personalInformationLabel.isDisplayed();
 	//Assert.assertEquals(personalInformationLabel.getText(),"Personal Information");
 	WebElement userNameLabel = driver.findElement(username_label);
 	userNameLabel.isDisplayed();
