@@ -21,7 +21,8 @@ public class dashboard_page {
 	private By navbar_menu = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/nav[1]/div[1]/div[2]");
 	private By my_profile_btn = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/nav[1]/div[1]/div[2]/div[1]/a[2]/span[1]/i[1]");
 	private By logout_btn = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/section[2]/div[1]/div[3]/button[1]/span[1]");
-	
+	private By notification_btn = By.xpath("//*[@id=\"__layout\"]/div/div/nav/div/div[2]/div/a[1]/span/i");
+	private By claim_btn = By.xpath("//*[@id=\"__layout\"]/div/div/nav/div/div[2]/div/a[3]/span");
 	//Function 
 	public void setup (WebDriver driver) throws Exception {
 		this.driver = driver;
@@ -50,5 +51,18 @@ public class dashboard_page {
 	public void navigate_to_profile () throws Exception {
 		WebElement myProfileBtn = driver.findElement(my_profile_btn);
 		myProfileBtn.click();
+		Thread.sleep(4000);
+	}
+	
+	public void click_on_notification_button () throws Exception {
+		WebElement notificationBtn = driver.findElement(notification_btn);
+		notificationBtn.click();
+		Thread.sleep(2000);
+	}
+	
+	public void click_on_claim_button () throws Exception {
+		WebElement claimBtn = driver.findElement(claim_btn);
+		claimBtn.click();
+		Thread.sleep(2000);
 	}
 }

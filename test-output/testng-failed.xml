@@ -3,14 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="futuready.testcases.TC_FU_003_PRO_My_Profile">
+      <class name="futuready.testcases.TC_FU_004_LOT_Logout_Account">
         <methods>
-          <include name="TC_FU_003_PRO_01_User_can_navigate_to_my_profile_page"/>
-          <include name="TC_FU_003_PRO_06_User_can_change_phone_number_of_account"/>
           <include name="afterTest"/>
+          <include name="TC_FU_004_LOT_01_Logout_Account"/>
           <include name="beforeTest"/>
         </methods>
-      </class> <!-- futuready.testcases.TC_FU_003_PRO_My_Profile -->
+      </class> <!-- futuready.testcases.TC_FU_004_LOT_Logout_Account -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -45,7 +45,13 @@ private By eye_icon_new_password_field = By.xpath("//*[@id=\"__layout\"]/div/div
 private By eye_icon_confirm_password_field = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[2]/div[4]/div/div/span/i");
 private By eye_icon_current_password_field = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[2]/div[2]/div/div/span/i");
 private By edit_phone_button = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div[1]/ul/li[3]/div/a");
-private By edit_phone_number_field = By.xpath("//*[@id=\"idPhone\"]");
+private By edit_phone_number_field = By.xpath("/html/body/div[1]/div/div/div/main/section[2]/div/div/div[2]/div[2]/div/div/div/input");
+private By warning_required_phone_field = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[2]/div[2]/div/p/div");
+private By warning_phone_data_type_message = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[2]/div[2]/div/p/div");
+private By edit_email_button = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div[1]/ul/li[4]/div/a");
+private By email_inputted_field = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[2]/div[2]/div/div/input");
+private By submitted_email_button = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div[4]/div/button");
+private By terms_condition_body = By.xpath("//*[@id=\"__layout\"]/div/div/section/div");
 //Back button
 private By back_btn_from_edit_password_page = By.xpath("//*[@id=\"__layout\"]/div/div/nav/div/div[1]/a/span/i");
 //Change phone number
@@ -121,12 +127,14 @@ public void input_new_password (String new_password) throws Exception {
 	WebElement newPassWordField = driver.findElement(enter_new_password_field);
 	newPassWordField.clear();
 	newPassWordField.sendKeys(new_password);
+	Thread.sleep(1000);
 }
 
 public void input_confirm_password (String new_password) throws Exception {
 	WebElement confirmNewPassword = driver.findElement(confirm_new_password_field);
 	confirmNewPassword.clear();
 	confirmNewPassword.sendKeys(new_password);
+	Thread.sleep(1000);
 }
 
 public void click_on_submit_button () throws Exception {
@@ -139,7 +147,7 @@ public void verify_required_field_message () throws Exception {
 	WebElement requiredFieldMessage = driver.findElement(verify_required_field_message);
 	requiredFieldMessage.isDisplayed();
 	Assert.assertEquals(requiredFieldMessage.getText(),"This field is required");
-	Thread.sleep(1000);
+	Thread.sleep(2000);
 }
 
 public void verify_new_password_inputted () throws Exception {
@@ -173,8 +181,23 @@ public void hide_or_unhide_the_characters_in_password_editted_field () throws Ex
 	Assert.assertNotEquals(confirmNewPassword.getText(), "*********");
 	Thread.sleep(2000);
 	eyeIconOnCurrentPasswordField.click();
+	Thread.sleep(200);
 	eyeIconOnNewPasswordField.click();
+	Thread.sleep(200);
 	eyeIconOnConfirmPasswordField.click();
+	Thread.sleep(200);
+}
+
+public void click_on_edit_phone_number_button () throws Exception {
+	WebElement editPhoneBtn = driver.findElement(edit_phone_button);
+	editPhoneBtn.click();
+	Thread.sleep(3000);
+}
+
+public void click_on_submit_phone_number_button () throws Exception {
+	WebElement submitBtnInPhonePage = driver.findElement(submit_button_in_phone_page);
+	submitBtnInPhonePage.click();
+	Thread.sleep(4000);
 }
 
 public void change_phone_number () throws Exception {
@@ -190,8 +213,76 @@ public void change_phone_number () throws Exception {
 	Thread.sleep(1000);
 	WebElement submitBtnInPhonePage = driver.findElement(submit_button_in_phone_page);
 	submitBtnInPhonePage.click();
+	Thread.sleep(3000);
 }
 
+public void warning_phone_required_field () throws Exception {
+	WebElement warning_message = driver.findElement(warning_required_phone_field);
+	warning_message.isDisplayed();
+	Assert.assertEquals(warning_message.getText(), "This field is required");
+	Thread.sleep(1000);
+}
+
+public void input_wrong_phone_number () throws Exception {
+	WebElement editPhoneNumberField = driver.findElement(edit_phone_number_field);
+	editPhoneNumberField.sendKeys("abcdef");
+	Thread.sleep(1000);
+}
+
+public void warning_phone_data_type_field () throws Exception {
+	WebElement warningPhoneDataTypemessage = driver.findElement(warning_phone_data_type_message);
+	warningPhoneDataTypemessage.isDisplayed();
+	Assert.assertEquals(warningPhoneDataTypemessage.getText(), "At least 9 characters");
+	Thread.sleep(1000);
+}
+
+public void click_on_edit_email_button () throws Exception {
+	WebElement editEmailBtn = driver.findElement(edit_email_button);
+	editEmailBtn.click();
+	Thread.sleep(2000);
+}
+
+public void input_email_edited_field () throws Exception {
+	WebElement emailInputtedField = driver.findElement(email_inputted_field);
+	emailInputtedField.sendKeys("agencytester11@gmail.com");
+	Thread.sleep(2000);
+}
+
+public void click_on_submit_edited_email_button () throws Exception {
+	WebElement submittedEmailBtn = driver.findElement(submitted_email_button);
+	submittedEmailBtn.click();
+	Thread.sleep(2000);
+}
+
+public void verify_app_version () throws Exception {
+	WebElement appVersionDisplay = driver.findElement(app_version_display);
+	appVersionDisplay.isDisplayed();
+}
+
+public void navigate_to_terms_condition_page () throws Exception {
+	WebElement termsConditionButton = driver.findElement(terms_condition_button);
+	termsConditionButton.click();
+	Thread.sleep(3000);
+	//WebElement termsConditionBody = driver.findElement(terms_condition_body);
+	//termsConditionBody.isDisplayed();
+	//Thread.sleep(1000);
+}
+
+public void navigate_to_privacy_policy_page () throws Exception {
+	WebElement privacyPolicyButton = driver.findElement(privacy_policy_button );
+	privacyPolicyButton.click();
+	Thread.sleep(3000);
+}
+public void click_on_back_button_of_browser () throws Exception {
+	driver.navigate().back();
+	Thread.sleep(3000);
+}
+
+public void click_on_logout_button () throws Exception {
+	WebElement logoutBtn = driver.findElement(logout_button);
+	logoutBtn.click();
+	Thread.sleep(3000);
+}
 
 
 }

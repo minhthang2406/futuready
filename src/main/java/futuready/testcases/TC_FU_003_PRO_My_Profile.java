@@ -112,10 +112,48 @@ public class TC_FU_003_PRO_My_Profile {
   public void TC_FU_003_PRO_06_User_can_change_phone_number_of_account () throws Exception {
 	  profilePage.change_phone_number();
   }
+  
+  @Test (enabled=true)
+  public void TC_FU_003_PRO_07_The_system_verifies_blank_required_fields_in_page_of_editing_phone_number () throws Exception {
+	  profilePage.click_on_back_button_of_browser();
+	  profilePage.click_on_edit_phone_number_button();
+	  profilePage.click_on_submit_phone_number_button();
+	  profilePage.warning_phone_required_field();
+  }
+  
+  @Test (enabled=true)
+  public void TC_FU_003_PRO_08_The_system_verifies_the_inputted_characters_in_field_of_edited_phone_number () throws Exception {
+	  profilePage.input_wrong_phone_number();
+	  profilePage.warning_phone_data_type_field();
+  }
+  
+  @Test (enabled=true)
+  public void TC_FU_003_PRO_09_User_can_change_Email_of_account () throws Exception {
+	  profilePage.click_on_back_button_of_browser();
+	  profilePage.click_on_edit_email_button();
+	  profilePage.input_email_edited_field();
+	  //profilePage.click_on_submit_edited_email_button();
+  }
+  
+  @Test (enabled=true)
+  public void TC_FU_003_PRO_10_User_can_view_app_version () throws Exception {
+	  profilePage.click_on_back_button_of_browser();
+	  profilePage.verify_app_version();
+  }
+  
+  @Test (enabled=true)
+  public void TC_FU_003_PRO_11_User_can_view_terms_and_condition () throws Exception {
+	  profilePage.navigate_to_terms_condition_page();
+  }
+  
+  @Test (enabled=true)
+  public void TC_FU_003_PRO_12_User_can_view_privacy_policy () throws Exception {
+	  profilePage.navigate_to_privacy_policy_page();
+  }
 
   @AfterTest
   public void afterTest() throws Exception {
-	  reportedMail.sending_reported_email(reported_email_subject,reportedMail.report_email_body(scenario_name));
+	 // reportedMail.sending_reported_email(reported_email_subject,reportedMail.report_email_body(scenario_name));
 	  Thread.sleep(1000);
 	  login.quit();
   }
