@@ -23,6 +23,7 @@ public class dashboard_page {
 	private By logout_btn = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/section[2]/div[1]/div[3]/button[1]/span[1]");
 	private By notification_btn = By.xpath("//*[@id=\"__layout\"]/div/div/nav/div/div[2]/div/a[1]/span/i");
 	private By claim_btn = By.xpath("//*[@id=\"__layout\"]/div/div/nav/div/div[2]/div/a[3]/span");
+	private By motor_box_btn = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div/div/div[1]/div");
 	//Function 
 	public void setup (WebDriver driver) throws Exception {
 		this.driver = driver;
@@ -63,6 +64,12 @@ public class dashboard_page {
 	public void click_on_claim_button () throws Exception {
 		WebElement claimBtn = driver.findElement(claim_btn);
 		claimBtn.click();
+		Thread.sleep(3000);
+	}
+	
+	public void click_on_motor_box_btn () throws Exception {
+		WebElement motorBoxButton = driver.findElement(motor_box_btn);
+		motorBoxButton.click();
 		Thread.sleep(2000);
 	}
 }

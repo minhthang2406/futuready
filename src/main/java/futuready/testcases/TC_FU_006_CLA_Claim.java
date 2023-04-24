@@ -11,7 +11,7 @@ import futuready.pages.login_with_user_name_and_password_page;
 import futuready.pages.myprofile_page;
 import futuready.pages.sign_up_account_page;
 import futuready.pages.sign_up_account_page_2;
-
+import futuready.pages.*;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
 
@@ -26,6 +26,7 @@ public class TC_FU_006_CLA_Claim {
 	  sign_up_account_page_2 signupAccountPage2 = new sign_up_account_page_2();
 	  myprofile_page profilePage = new myprofile_page();
 	  reported_email_sending reportedMail = new reported_email_sending();
+	  claim_page claimPage = new claim_page();
 	  private String reported_email_subject = "📺 [Test Report] | Scenario TC-FU-005-NOF-Notification";
 	  private String scenario_name = "📔 TC-FU-005-NOF-Notification";
   @BeforeTest
@@ -41,6 +42,7 @@ public class TC_FU_006_CLA_Claim {
 	  profilePage.setup_driver(baseSetup.driver);
 	  loginWithUserAndPass.setup_driver(baseSetup.driver);
 	  dashboard.setup(baseSetup.driver);
+	  claimPage.setup(baseSetup.driver);
   }
   
   @Test (enabled=true)
@@ -51,10 +53,13 @@ public class TC_FU_006_CLA_Claim {
 	  loginWithUserAndPass.input_password(login_with_user_name_and_password_page.password_input);
 	  loginWithUserAndPass.click_login_btn();
 	  dashboard.click_on_claim_button();
+	  claimPage.verify_elements();
   }
 
   @AfterTest
-  public void afterTest() {
+  public void afterTest() throws Exception {
+	  Thread.sleep(2000);
+	  login.quit();
   }
 
 }

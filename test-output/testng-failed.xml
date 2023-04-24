@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="futuready.testcases.TC_FU_004_LOT_Logout_Account">
+      <class name="futuready.testcases.TC_FU_007_MOT_Motor_Insurance">
         <methods>
+          <include name="TC_FU_007_MOT_007_User_can_filter_plans_search_result"/>
           <include name="afterTest"/>
-          <include name="TC_FU_004_LOT_01_Logout_Account"/>
           <include name="beforeTest"/>
         </methods>
-      </class> <!-- futuready.testcases.TC_FU_004_LOT_Logout_Account -->
+      </class> <!-- futuready.testcases.TC_FU_007_MOT_Motor_Insurance -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
