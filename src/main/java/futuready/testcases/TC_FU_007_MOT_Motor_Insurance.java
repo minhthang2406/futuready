@@ -85,7 +85,8 @@ public class TC_FU_007_MOT_Motor_Insurance {
   }
   
   @Test (enabled=true)
-  public void TC_FU_007_MOT_007_User_can_filter_plans_search_result () throws Exception {
+  public void TC_FU_007_MOT_008_User_can_filter_plans_search_result () throws Exception {
+	  motorInsurancePage.refresh_page();
 	  motorInsurancePage.handle_filter_section();
 	  motorInsurancePage.click_on_apply_filter_button();
   }

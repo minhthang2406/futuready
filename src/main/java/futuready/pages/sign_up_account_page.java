@@ -217,6 +217,7 @@ public class sign_up_account_page {
 		Thread.sleep(1000);
 	}
 	
+	//How to scroll down to bottom
 	public void scroll_down_to_bottom() throws Exception {
 		driver.findElement(By.cssSelector("body")).sendKeys(Keys.END);
 		Thread.sleep(2000);

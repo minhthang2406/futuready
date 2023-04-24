@@ -3,9 +3,9 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.*;
 import io.github.bonigarcia.*;
 import io.github.bonigarcia.wdm.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 
 import futuready.pages.*;
 import futuready.base.*;
@@ -61,9 +61,9 @@ public class motor_insurance_page {
 	private By first_plan_box_view_button = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div[2]/div[2]/div[1]/div/div/div[4]/div[1]");
 	private By first_plan_box_compare_checkbox = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div[2]/div[2]/div[1]/div/div/div[4]/div[2]/label/span[1]");
 	private By first_plan_box_select_plan_button = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div[2]/div[2]/div[1]/div/div/div[5]/div/button");
-	private By filter_section = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div[1]/div");
-	private By filter_section_filter_label = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div[1]/div/h5");
-	private By filter_section_class_label = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div[1]/div/p[1]");
+	private By filter_section = By.xpath("//body/div[@id='__nuxt']/div[@id='__layout']/div[1]/div[1]/div[1]/div[1]/main[1]/div[1]/div[2]/div[2]/div[1]/div[1]");
+	private By filter_section_filter_label = By.xpath("//h5[contains(text(),'Filter')]");
+	private By filter_section_class_label = By.xpath("//body/div[@id='__nuxt']/div[@id='__layout']/div[1]/div[1]/div[1]/div[1]/main[1]/div[1]/div[2]/div[2]/div[1]/div[1]/p[1]");
 	private By filter_section_class_01_checkbox = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div[1]/div/div[1]/div[1]/div/label");
 	private By filter_section_class_02plus_checkbox = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/label");
 	private By filter_section_class_02_checkbox = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div[1]/div/div[1]/div[3]/div/label");
@@ -78,8 +78,8 @@ public class motor_insurance_page {
 	private By filter_section_thanachart_insurance_checkbox = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div[1]/div/div[3]/div[2]/div/label");
 	private By filter_section_sum_insured_label = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div[1]/div/p[4]");
 	private By filter_section_sum_insured_slider = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div[1]/div/div[4]/div[1]/div/div/div[1]");
-	private By filter_section_sum_insured_minimum_field = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div[1]/div/div[4]/div[2]/div[1]/div/div");
-	private By filter_section_sum_insured_maximum_field = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div[1]/div/div[4]/div[2]/div[3]/div/div");
+	private By filter_section_sum_insured_minimum_field = By.xpath("//body/div[@id='__nuxt']/div[@id='__layout']/div[1]/div[1]/div[1]/div[1]/main[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[4]/div[2]/div[1]/div[1]/div[1]/input[1]");
+	private By filter_section_sum_insured_maximum_field = By.xpath("//body/div[@id='__nuxt']/div[@id='__layout']/div[1]/div[1]/div[1]/div[1]/main[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[4]/div[2]/div[3]/div[1]/div[1]/input[1]");
 	private By filter_section_apply_filter_button = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div[1]/div/div[5]/div/button[2]");
 	private By filter_section_reset_filter_button = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div[1]/div/div[5]/div/button[1]");
 	//Setup 
@@ -253,11 +253,21 @@ public class motor_insurance_page {
 		filterSectionSumInsuredLabel.isDisplayed();
 		WebElement filterSectionSumInsuredSlider = driver.findElement(filter_section_sum_insured_slider);
 		filterSectionSumInsuredSlider.isDisplayed();
+		scroll_page();
+		Robot rb = new Robot();
 		WebElement filterSectionSumInsuredSliderMinimumField = driver.findElement(filter_section_sum_insured_minimum_field);
 		filterSectionSumInsuredSliderMinimumField.isDisplayed();
+		filterSectionSumInsuredSliderMinimumField.click();
+		filterSectionSumInsuredSliderMinimumField.sendKeys(Keys.BACK_SPACE);
+		
+		filterSectionSumInsuredSliderMinimumField.clear();
+		Thread.sleep(1000);
 		filterSectionSumInsuredSliderMinimumField.sendKeys("120000");
 		WebElement filterSectionSumInsuredSliderMaximumField = driver.findElement(filter_section_sum_insured_maximum_field);
 		filterSectionSumInsuredSliderMaximumField.isDisplayed();
+		filterSectionSumInsuredSliderMaximumField.click();
+		filterSectionSumInsuredSliderMaximumField.clear();
+		Thread.sleep(1000);
 		filterSectionSumInsuredSliderMaximumField.sendKeys("300000");
 	}
 	
@@ -271,5 +281,17 @@ public class motor_insurance_page {
 		WebElement resetFilterBtn = driver.findElement(filter_section_reset_filter_button);
 		resetFilterBtn.click();
 		Thread.sleep(2000);
+	}
+	
+	public void refresh_page () throws Exception {
+		Thread.sleep(5000);
+		driver.navigate().refresh();
+		Thread.sleep(2000);
+	}
+	
+	public void scroll_page () throws Exception {
+		Robot rb = new Robot ();
+		rb.keyPress(KeyEvent.VK_DOWN);
+		rb.keyRelease(KeyEvent.VK_DOWN);
 	}
 }

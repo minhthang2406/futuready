@@ -5,7 +5,7 @@
     <classes>
       <class name="futuready.testcases.TC_FU_007_MOT_Motor_Insurance">
         <methods>
-          <include name="TC_FU_007_MOT_007_User_can_filter_plans_search_result"/>
+          <include name="TC_FU_007_MOT_008_User_can_filter_plans_search_result"/>
           <include name="afterTest"/>
           <include name="beforeTest"/>
         </methods>
