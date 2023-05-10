@@ -257,18 +257,18 @@ public class motor_insurance_page {
 		Robot rb = new Robot();
 		WebElement filterSectionSumInsuredSliderMinimumField = driver.findElement(filter_section_sum_insured_minimum_field);
 		filterSectionSumInsuredSliderMinimumField.isDisplayed();
-		filterSectionSumInsuredSliderMinimumField.click();
-		filterSectionSumInsuredSliderMinimumField.sendKeys(Keys.BACK_SPACE);
+		//filterSectionSumInsuredSliderMinimumField.click();
+		//filterSectionSumInsuredSliderMinimumField.sendKeys(Keys.BACK_SPACE);
 		
-		filterSectionSumInsuredSliderMinimumField.clear();
+		//filterSectionSumInsuredSliderMinimumField.clear();
 		Thread.sleep(1000);
-		filterSectionSumInsuredSliderMinimumField.sendKeys("120000");
+		//filterSectionSumInsuredSliderMinimumField.sendKeys("");
 		WebElement filterSectionSumInsuredSliderMaximumField = driver.findElement(filter_section_sum_insured_maximum_field);
 		filterSectionSumInsuredSliderMaximumField.isDisplayed();
-		filterSectionSumInsuredSliderMaximumField.click();
-		filterSectionSumInsuredSliderMaximumField.clear();
+		//filterSectionSumInsuredSliderMaximumField.click();
+		//filterSectionSumInsuredSliderMaximumField.clear();
 		Thread.sleep(1000);
-		filterSectionSumInsuredSliderMaximumField.sendKeys("300000");
+		//filterSectionSumInsuredSliderMaximumField.sendKeys("");
 	}
 	
 	public void click_on_apply_filter_button () throws Exception {
@@ -282,6 +282,18 @@ public class motor_insurance_page {
 		resetFilterBtn.click();
 		Thread.sleep(2000);
 	}
+	
+	public void  uncheck_insurer_in_filter_section () throws Exception {
+		WebElement filterSectionInsurerThaisiriCheckbox = driver.findElement(filter_section_thaisiri_insurance_checkbox);
+		filterSectionInsurerThaisiriCheckbox.click();		
+		WebElement filterSectionInsurerThanachartCheckbox = driver.findElement(filter_section_thanachart_insurance_checkbox);
+		filterSectionInsurerThanachartCheckbox.click();
+		Thread.sleep(2000);
+		WebElement applyFilterBtn = driver.findElement(filter_section_apply_filter_button);
+		applyFilterBtn.click();
+		Thread.sleep(4000);
+	}
+	
 	
 	public void refresh_page () throws Exception {
 		Thread.sleep(5000);

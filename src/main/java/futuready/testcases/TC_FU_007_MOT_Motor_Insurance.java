@@ -29,6 +29,7 @@ public class TC_FU_007_MOT_Motor_Insurance {
 	  reported_email_sending reportedMail = new reported_email_sending();
 	  claim_page claimPage = new claim_page();
 	  motor_insurance_page motorInsurancePage = new motor_insurance_page();
+	  request_quotation_page requestQuotationPage = new request_quotation_page(); 
 	  private String reported_email_subject = "📺 [Test Report] | Scenario TC-FU-007-MOT-Motor-Insurance";
 	  private String scenario_name = "📔 TC-FU-007-MOT-Motor-Insurance";
   @BeforeTest
@@ -45,6 +46,7 @@ public class TC_FU_007_MOT_Motor_Insurance {
 	  loginWithUserAndPass.setup_driver(baseSetup.driver);
 	  motorInsurancePage.setup(baseSetup.driver);
 	  dashboard.setup(baseSetup.driver);
+	  requestQuotationPage.setup_driver(baseSetup.driver);
   }
   
   @Test (enabled=true)
@@ -89,6 +91,21 @@ public class TC_FU_007_MOT_Motor_Insurance {
 	  motorInsurancePage.refresh_page();
 	  motorInsurancePage.handle_filter_section();
 	  motorInsurancePage.click_on_apply_filter_button();
+  }
+  
+  @Test (enabled = true)
+  public void TC_FU_007_MOT_009_User_can_request_a_quotation () throws Exception {
+	  motorInsurancePage.uncheck_insurer_in_filter_section();
+	  //motorInsurancePage.click_on_apply_filter_button();
+	  Thread.sleep(6000);
+	  requestQuotationPage.verify_elements();
+	  requestQuotationPage.input_first_name();
+	  requestQuotationPage.input_last_name();
+	  requestQuotationPage.input_mobile_number();
+	  requestQuotationPage.input_email_address();
+	  requestQuotationPage.input_line_id();
+	  requestQuotationPage.input_line_display_name();
+	  requestQuotationPage.click_on_request_for_quotation_btn();
   }
 
   @AfterTest
