@@ -33,6 +33,7 @@ public class request_quotation_page {
 	private By line_display_name = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div/div/div/div/div/div[6]/label");
 	private By line_display_name_field = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div/div/div/div/div/div[6]/div/input");
 	private By request_for_quotation_button = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div/div/div/div/div/button");
+	private By back_button = By.xpath("");
 	//Setup Function
 	public void setup_driver(WebDriver driver) throws Exception {
 		this.driver = driver;
@@ -74,13 +75,21 @@ public class request_quotation_page {
 	
 	public void input_first_name () throws Exception {
 		WebElement firstNameField = driver.findElement(first_name_field);
-		firstNameField.clear();
+		firstNameField.click();
+		//firstNameField.clear();
+		Robot rb = new Robot ();
+		rb.keyPress(KeyEvent.VK_CONTROL);
+		rb.keyPress(KeyEvent.VK_A);
+		rb.keyRelease(KeyEvent.VK_CONTROL);
+		rb.keyRelease(KeyEvent.VK_A);
+		Thread.sleep(2000);
 		firstNameField.sendKeys("My First Name");
 		Thread.sleep(1000);
 	}
 	
 	public void input_last_name () throws Exception {
 		WebElement lastNameField = driver.findElement(last_name_field);
+		lastNameField.click();
 		lastNameField.clear();
 		lastNameField.sendKeys("My Last Name");
 		Thread.sleep(1000);
@@ -88,6 +97,7 @@ public class request_quotation_page {
 	
 	public void input_mobile_number () throws Exception {
 		WebElement mobileField = driver.findElement(mobile_phone_field);
+		mobileField.click();
 		mobileField.clear();
 		mobileField.sendKeys("0929999399");
 		Thread.sleep(1000);
@@ -95,6 +105,7 @@ public class request_quotation_page {
 	
 	public void input_email_address () throws Exception {
 		WebElement emailAddressField = driver.findElement(email_address_field);
+		emailAddressField.click();
 		emailAddressField.clear();
 		emailAddressField.sendKeys("testmail@gmail.com");
 		Thread.sleep(1000);
@@ -119,4 +130,55 @@ public class request_quotation_page {
 		requestForQuotationButton.click();
 		Thread.sleep(1000);
 	}
+	
+	public void reload_page () throws Exception {
+		Robot rb = new Robot();
+		rb.keyPress(KeyEvent.VK_F5);
+		rb.keyRelease(KeyEvent.VK_F5);
+		//driver.navigate().refresh();
+		Thread.sleep(3000);
+	}
+	
+	public void clear_first_name () throws Exception {
+		WebElement firstNameField = driver.findElement(first_name_field);
+		firstNameField.click();
+		firstNameField.clear();
+		Thread.sleep(1000);
+	}
+	
+	public void clear_last_name () throws Exception {
+		WebElement lastNameField = driver.findElement(last_name_field);
+		lastNameField.click();
+		lastNameField.clear();
+		Thread.sleep(1000);
+	}
+	
+	public void clear_mobile_number () throws Exception {
+		WebElement mobileField = driver.findElement(mobile_phone_field);
+		mobileField.click();
+		mobileField.clear();
+		Thread.sleep(1000);
+	}
+	
+	public void clear_email_address () throws Exception {
+		WebElement emailAddressField = driver.findElement(email_address_field);
+		emailAddressField.click();
+		emailAddressField.clear();
+		Thread.sleep(1000);
+	}
+	
+	public void clear_line_id () throws Exception {
+		WebElement lineIdField = driver.findElement(line_id_field);
+		lineIdField.click();
+		lineIdField.clear();
+		Thread.sleep(1000);
+	}
+	
+	public void clear_line_display_name () throws Exception {
+		WebElement lineDisplayNameField = driver.findElement(line_display_name_field);
+		lineDisplayNameField.click();
+		lineDisplayNameField.clear();
+		Thread.sleep(1000);
+	}
+	
 }

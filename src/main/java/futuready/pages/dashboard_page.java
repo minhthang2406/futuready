@@ -24,6 +24,7 @@ public class dashboard_page {
 	private By notification_btn = By.xpath("//*[@id=\"__layout\"]/div/div/nav/div/div[2]/div/a[1]/span/i");
 	private By claim_btn = By.xpath("//*[@id=\"__layout\"]/div/div/nav/div/div[2]/div/a[3]/span");
 	private By motor_box_btn = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div/div/div[1]/div");
+	private By motorbike_box_btn = By.xpath("//*[@id=\"__layout\"]/div/div/main/section[2]/div/div/div/div/div[2]");
 	//Function 
 	public void setup (WebDriver driver) throws Exception {
 		this.driver = driver;
@@ -70,6 +71,12 @@ public class dashboard_page {
 	public void click_on_motor_box_btn () throws Exception {
 		WebElement motorBoxButton = driver.findElement(motor_box_btn);
 		motorBoxButton.click();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
+	}
+	
+	public void click_on_motorbike_box_btn () throws Exception {
+		WebElement motorBikeBoxButton = driver.findElement(motorbike_box_btn);
+		motorBikeBoxButton.click();
+		Thread.sleep(4000);
 	}
 }

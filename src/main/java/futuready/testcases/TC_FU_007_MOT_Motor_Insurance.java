@@ -101,10 +101,23 @@ public class TC_FU_007_MOT_Motor_Insurance {
 	  requestQuotationPage.verify_elements();
 	  requestQuotationPage.input_first_name();
 	  requestQuotationPage.input_last_name();
-	  requestQuotationPage.input_mobile_number();
-	  requestQuotationPage.input_email_address();
+	  //requestQuotationPage.input_mobile_number();
+	  //requestQuotationPage.input_email_address();
 	  requestQuotationPage.input_line_id();
 	  requestQuotationPage.input_line_display_name();
+	  requestQuotationPage.click_on_request_for_quotation_btn();
+  }
+  
+  @Test (enabled = true)
+  public void TC_FU_007_MOT_010_System_verifies_blank_fields_of_quotation () throws Exception {
+	  requestQuotationPage.reload_page();
+	  motorInsurancePage.uncheck_insurer_in_filter_section();
+	  requestQuotationPage.clear_first_name();
+	  requestQuotationPage.clear_last_name();
+	  requestQuotationPage.clear_mobile_number();
+	  requestQuotationPage.clear_email_address();
+	  requestQuotationPage.clear_line_display_name();
+	  requestQuotationPage.clear_line_id();
 	  requestQuotationPage.click_on_request_for_quotation_btn();
   }
 

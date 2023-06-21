@@ -60,7 +60,7 @@ public class login_with_user_name_and_password_page {
 	public void click_login_btn () throws Exception {
 		WebElement loginBtn = driver.findElement(login_btn);
 		loginBtn.click();
-		Thread.sleep(4000);
+		Thread.sleep(5000);
 	}
 	
 	public void verify_wrong_login_info_message_display () throws Exception {
