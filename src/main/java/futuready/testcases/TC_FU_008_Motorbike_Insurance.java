@@ -10,7 +10,8 @@ public class TC_FU_008_Motorbike_Insurance {
 baseSetup setup = new baseSetup();
 login_page login = new login_page();
 dashboard_page dashboard = new dashboard_page ();
-login_with_user_name_and_password_page loginWithUserAndPass = new login_with_user_name_and_password_page(); 	
+login_with_user_name_and_password_page loginWithUserAndPass = new login_with_user_name_and_password_page(); 
+motorbike_insurance_page motorBikeInsurancePage = new motorbike_insurance_page();
   @BeforeTest
   public void beforeTest() throws Exception {
 	  baseSetup.wellcome();
@@ -23,6 +24,7 @@ login_with_user_name_and_password_page loginWithUserAndPass = new login_with_use
 	  login.setup_driver(baseSetup.driver);
 	  loginWithUserAndPass.setup_driver(baseSetup.driver);
 	  dashboard.setup(baseSetup.driver);
+	  motorBikeInsurancePage.setup_driver(baseSetup.driver);
   }  
   @Test (enabled=true)
   public void TC_FU_008_MTB_01_User_can_navigate_to_Motorbike_Insurance_Page () throws Exception {
@@ -32,6 +34,13 @@ login_with_user_name_and_password_page loginWithUserAndPass = new login_with_use
 	  loginWithUserAndPass.input_password(login_with_user_name_and_password_page.password_input);
 	  loginWithUserAndPass.click_login_btn();
 	  dashboard.click_on_motorbike_box_btn();
+	  motorBikeInsurancePage.verify_elements();
+  }
+  
+  @Test (enabled = true)
+  public void TC_FU_008_MTB_02_User_can_search_motorbike_insurance_plan () throws Exception {
+	  motorBikeInsurancePage.click_on_search_branch_field();
+	  motorBikeInsurancePage.input_search_keys();
   }
   
   @AfterTest

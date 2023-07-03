@@ -14,7 +14,7 @@ import org.testng.*;
 
 public class dashboard_page {
 	public static WebDriver driver;
-//Locator
+	//Locator
 	private By logo_futuready = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/nav[1]/div[1]/div[1]/a[1]/img[1]");
 	private By dashboard_feature = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/section[1]/div[1]/div[1]/div[1]");
 	private By category = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/section[2]/div[1]/div[1]/div[1]");
