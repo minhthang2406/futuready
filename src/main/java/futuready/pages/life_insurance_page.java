@@ -10,6 +10,7 @@ WebDriver driver;
 	private By life_insurance_label = By.xpath("//*[@id=\"__layout\"]/div/div/section/div/h3");
 	private By date_of_birth_label = By.xpath("//*[@id=\"__layout\"]/div/div/section/div/div/div[2]/form/div[1]/label");
 	private By date_of_birth_field = By.xpath("//*[@id=\"__layout\"]/div/div/section/div/div/div[2]/form/div[1]/div/div/div[1]/div/input");
+	private By select_year_of_birth = By.xpath("//*[@id=\"__layout\"]/div/div/section/div/div/div[2]/form/div[1]/div/div/div[3]/div/div/div/header/div/div/div/div/div/div[2]/span/select");
 	private By select_gender_label = By.xpath("//*[@id=\"__layout\"]/div/div/section/div/div/div[2]/form/label[1]");
 	private By select_gender_male = By.xpath("//*[@id=\"__layout\"]/div/div/section/div/div/div[2]/form/div[2]/div/div/div[1]");
 	private By select_gender_female = By.xpath("//*[@id=\"__layout\"]/div/div/section/div/div/div[2]/form/div[2]/div/div/div[2]");
@@ -63,5 +64,11 @@ WebDriver driver;
 		amountField.isDisplayed();
 		WebElement searchPlanButton = driver.findElement(search_plan_button);
 		searchPlanButton.isDisplayed();
+	}
+	
+	public void select_date_of_birth () throws Exception {
+		WebElement dateOfBirthField = driver.findElement(date_of_birth_field);
+		dateOfBirthField.click();
+		
 	}
 }

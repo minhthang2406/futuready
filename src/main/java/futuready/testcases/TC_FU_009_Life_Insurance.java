@@ -39,6 +39,11 @@ life_insurance_page lifeInsurancePage = new life_insurance_page();
 	  dashboard.click_on_life_insurance_box();
 	  lifeInsurancePage.verify_element();
   }
+  
+  @Test (enabled = true)
+  public void TC_FU_009_LI_02_User_can_search_plan_of_life_insurance () throws Exception {
+	  
+  }
 
   @AfterTest
   public void afterTest()throws Exception {
