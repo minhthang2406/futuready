@@ -82,6 +82,13 @@ public class motor_insurance_page {
 	private By filter_section_sum_insured_maximum_field = By.xpath("//body/div[@id='__nuxt']/div[@id='__layout']/div[1]/div[1]/div[1]/div[1]/main[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[4]/div[2]/div[3]/div[1]/div[1]/input[1]");
 	private By filter_section_apply_filter_button = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div[1]/div/div[5]/div/button[2]");
 	private By filter_section_reset_filter_button = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div[1]/div/div[5]/div/button[1]");
+	
+	private By view_plan_detail_btn = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/div[2]/div[2]/div[2]/div[1]/div/div/div[4]/div[1]/a");
+	private By insurer_information_section = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[3]/div[2]/div/header");
+	private By plan_detail_section = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[3]/div[2]/div/section");
+	private By footer_of_plan_detail_card = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[3]/div[2]/div/footer");
+	private By plan_detail_card_select_plan_btn = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[3]/div[2]/div/footer/div/button");
+	private By proceed_btn = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/div[2]/section/div/div/div/div/div/div[4]/div/button");
 	//Setup 
 	public void setup (WebDriver driver) throws Exception {
 		this.driver = driver;
@@ -294,6 +301,40 @@ public class motor_insurance_page {
 		Thread.sleep(4000);
 	}
 	
+	
+	public void click_on_view_plan_detail () throws Exception {
+		Thread.sleep(2000);
+		WebElement viewPlanDetailBtn = driver.findElement(view_plan_detail_btn);
+		viewPlanDetailBtn.click();
+	}
+	
+	public void verify_plan_detail_view () throws Exception {
+		WebElement insurerInformationSection = driver.findElement(insurer_information_section);
+		insurerInformationSection.isDisplayed();
+		WebElement planDetailSection = driver.findElement(plan_detail_section);
+		planDetailSection.isDisplayed();
+		WebElement footerOfPlanDetail = driver.findElement(footer_of_plan_detail_card);
+		footerOfPlanDetail.isDisplayed();
+		WebElement PlanDetailCardSelectPlanBtn = driver.findElement(plan_detail_card_select_plan_btn);
+		PlanDetailCardSelectPlanBtn.isDisplayed();
+		Thread.sleep(3000);
+	}
+	
+	public void plan_detail_view_card_click_on_select_plan_btn () throws Exception {
+		WebElement PlanDetailCardSelectPlanBtn = driver.findElement(plan_detail_card_select_plan_btn);
+		PlanDetailCardSelectPlanBtn.click();
+		Thread.sleep(2000);
+	}
+	
+	public void click_on_proceed_btn () throws Exception {
+		WebElement proceedBtn = driver.findElement(proceed_btn);
+		proceedBtn.click();
+		Thread.sleep(2000);
+	}
+	
+	public void verify_prospect_detail_page () throws Exception {
+		
+	}
 	
 	public void refresh_page () throws Exception {
 		Thread.sleep(5000);

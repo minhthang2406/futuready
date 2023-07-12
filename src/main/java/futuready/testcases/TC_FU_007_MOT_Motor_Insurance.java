@@ -30,6 +30,7 @@ public class TC_FU_007_MOT_Motor_Insurance {
 	  claim_page claimPage = new claim_page();
 	  motor_insurance_page motorInsurancePage = new motor_insurance_page();
 	  request_quotation_page requestQuotationPage = new request_quotation_page(); 
+	  prospect_detail_page prospectDetailPage = new prospect_detail_page();
 	  private String reported_email_subject = "📺 [Test Report] | Scenario TC-FU-007-MOT-Motor-Insurance";
 	  private String scenario_name = "📔 TC-FU-007-MOT-Motor-Insurance";
   @BeforeTest
@@ -47,6 +48,7 @@ public class TC_FU_007_MOT_Motor_Insurance {
 	  motorInsurancePage.setup(baseSetup.driver);
 	  dashboard.setup(baseSetup.driver);
 	  requestQuotationPage.setup_driver(baseSetup.driver);
+	  prospectDetailPage.setup_driver(baseSetup.driver);
   }
   
   @Test (enabled=true)
@@ -119,6 +121,21 @@ public class TC_FU_007_MOT_Motor_Insurance {
 	  requestQuotationPage.clear_line_display_name();
 	  requestQuotationPage.clear_line_id();
 	  requestQuotationPage.click_on_request_for_quotation_btn();
+  }
+  
+  @Test (enabled = true)
+  public void TC_FU_007_MOT_011_User_can_view_plan_detail () throws Exception {
+	  requestQuotationPage.reload_page();
+	  motorInsurancePage.click_on_view_plan_detail();
+	  motorInsurancePage.verify_plan_detail_view();
+	  Thread.sleep(3000);
+  }
+  
+  @Test (enabled = true)
+  public void TC_FU_007_MOT_012_User_can_submit_prospect_detail_page () throws Exception {
+	  motorInsurancePage.plan_detail_view_card_click_on_select_plan_btn();
+	  motorInsurancePage.click_on_proceed_btn();
+	  prospectDetailPage.verify_elements_of_prospect_page();
   }
 
   @AfterTest
