@@ -7,6 +7,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 public class prospect_detail_page {
 WebDriver driver;
+private String firstNameEngInput = "Auto";
+private String lastNameEngInput = "Test";
+private String firstNameThaiInput = "ผม";
+private String lastNameThaiInput = "ผม";
+private String mobifoneInput = "949999399";
+private String emailInput = "agencytester22@gmail.com";
 		//Locator
 		private By prospect_detail_label = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/section/div/div[2]/div[2]/h2");
 		private By insurer_information_section = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/section/div/div[2]/div[1]/div/div/div[1]");
@@ -30,6 +36,10 @@ WebDriver driver;
 		private By confirmation_text_section = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/section/div/div[2]/div[2]/div[5]");
 		private By submit_prospect_button = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/section/div/div[2]/div[2]/div[6]");
 		private By detail_btn = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/section/div/div[2]/div[1]/div/div/div[3]");
+		private By thank_you_icon = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/section/div/div[2]/div[2]/div/div[1]/i");
+		private By thank_you_form = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/section/div/div[2]/div[2]/div");
+		private By back_to_home_btn = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/section/div/div[2]/div[2]/div/div[2]");
+		private By link_for_customer = By.xpath("//*[@id=\"__layout\"]/div/div/div/div/main/div/section/div/div[2]/div[2]/div/p[3]/a");
 		//Function
 		public void setup_driver (WebDriver driver) throws Exception {
 			this.driver = driver;
@@ -92,4 +102,43 @@ WebDriver driver;
 			Thread.sleep(3000);
 		}		
 		
+		public void input_information () throws Exception {
+			WebElement firstNameEngField = driver.findElement(first_name_eng_field);
+			firstNameEngField.sendKeys(firstNameEngInput);
+			WebElement lastNameEngField = driver.findElement(last_name_eng_field);
+			lastNameEngField.sendKeys(lastNameEngInput);
+			WebElement firstNameThaiField = driver.findElement(first_name_thai_field);
+			firstNameThaiField.sendKeys(firstNameThaiInput);
+			WebElement lastNameThaiField = driver.findElement(last_name_thai_field);
+			lastNameThaiField.sendKeys(lastNameThaiInput);
+			WebElement mobifoneField = driver.findElement(mobifone_field);
+			mobifoneField.sendKeys(mobifoneInput);
+			WebElement emailAddressField = driver.findElement(email_address_field);
+			emailAddressField.sendKeys(emailInput);
+			Thread.sleep(3000);
+			WebElement submitProspectBtn = driver.findElement(submit_prospect_button);
+			submitProspectBtn.click();
+			Thread.sleep(5000);
+		}
+		
+		public void verify_message_after_submit_prospect () throws Exception {
+			WebElement thankYouIcon = driver.findElement(thank_you_icon);
+			thankYouIcon.isDisplayed();
+			WebElement thankYouForm = driver.findElement(thank_you_form);
+			thankYouForm.isDisplayed();
+			WebElement linkToCustomer = driver.findElement(link_for_customer);
+			linkToCustomer.isDisplayed();
+			WebElement backToHomeButton = driver.findElement(back_to_home_btn);
+			backToHomeButton.isDisplayed();
+			Thread.sleep(3000);
+		}
+		
+		public void navigate_to_plan_detail_input_information_page () throws Exception {
+			WebElement linkToCustomer = driver.findElement(link_for_customer);
+			linkToCustomer.click();
+		}
+		
+		public void fill_application_step () throws Exception {
+			
+		}
 }
